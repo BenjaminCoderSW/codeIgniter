@@ -1,5 +1,8 @@
 <?=$cabecera2?>
-                <div class=" m-0 card card3 text-bg-dark position-absolute top-50 start-50 translate-middle" >
+    <div class="row">
+        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 mt-2"></div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 position-relative mt-2">
+            <div class="card card3 text-bg-dark">
                     <form class="row card-body" action="<?=base_url('usuarios/guardar')?>" method="post" enctype="multipart/form-data">
                         <div class="mb-2">
                             <h4 class="text-md-center text-sm-center"><strong>BenVani Cineplex</strong></h4>
@@ -40,15 +43,18 @@
                                 <option value="Inactivo">Inactivo</option>
                             </select>
                         </div>
-                        <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 ">
-                            
+                        <div class="col-sm-10 col-md-6 col-lg-6 col-xl-6 "></div>
+                        <div class=" col-sm-12 col-md-1 col-lg-1 col-xl-1 m-2 ">
+                            <button class="btn btn-danger" type="submit">Guardar</button>
                         </div>
+                        <div class="col-sm-10 col-md-2 col-lg-2 col-xl-2"></div>
                         <div class=" col-sm-1 col-md-1 col-lg-1 col-xl-1 m-2 ">
                             <a href="<?=base_url('usuarios')?>" type="submit" id="btnEnviar" class="btn btn-danger ">Cancelar</a>
                         </div>
-                        <div class=" col-sm-1 col-md-1 col-lg-1 col-xl-1 m-2 ">
-                        <button class="btn btn-danger" type="submit">Guardar</button>
-                        </div>
                     </form>
                 </div>
+            </div>
+        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 mt-2"></div>
+        </div>
+    </div>
 <?=$piepagina?>
