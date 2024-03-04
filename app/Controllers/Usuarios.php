@@ -11,15 +11,37 @@ class Usuarios extends Controller{
     }
 
     public function usuarios_view()
-    {
-        $usuarios = new Usuario();
-        $datos['usuarios'] = $usuarios->orderBy('id_usuario','ASC')->findAll();
-        $datos['cabecera'] = view('template/cabecera');
-        $datos['piepagina'] = view('template/piepagina');
-        if (!session()->has('usuario_id')) {
-            return view('usuarios/crud_usuarios', $datos);
+{
+    $usuarios = new Usuario();
+    $datos['cabecera'] = view('template/cabecera');
+    $datos['piepagina'] = view('template/piepagina');
+
+    $filtro_tipo_usuario = $this->request->getGet('tipo_usuario');
+    $filtro_estado_usuario = $this->request->getGet('estado_usuario');
+    $filtro_nombre_usuario = $this->request->getGet('u');
+
+    if (!session()->has('usuario_id')) {
+        $query = $usuarios;
+
+        if ($filtro_tipo_usuario && $filtro_tipo_usuario != 'tipo_usuario') {
+            $query = $query->where('tipo_usuario', $filtro_tipo_usuario);
         }
+        if ($filtro_estado_usuario && $filtro_estado_usuario != 'estado_usuario') {
+            $query = $query->where('estado_usuario', $filtro_estado_usuario);
+        }
+        if ($filtro_nombre_usuario) {
+            $query = $query->like('nombre_usuario', $filtro_nombre_usuario);
+        }
+
+        $datos['usuarios'] = $query->orderBy('id_usuario', 'ASC')->findAll();
+
+        return view('usuarios/crud_usuarios', $datos);
     }
+    $datos['usuarios'] = $usuarios->orderBy('id_usuario', 'ASC')->findAll();
+    return view('usuarios/crud_usuarios', $datos);
+}
+
+
     public function crear_usuario_view()
     {
         $datos['cabecera2'] = view('template/cabecera_form');
@@ -61,8 +83,8 @@ class Usuarios extends Controller{
             return redirect()->back()->withInput();
         }
         
-            $password_encriptada = password_hash($password, PASSWORD_DEFAULT);
-    
+            $password_encriptada = $this->encriptar($password, 'Hola123.');
+
             $datos = [
                 "nombre_usuario" => $nombre_usuario,
                 "password" => $password_encriptada,
@@ -89,7 +111,7 @@ class Usuarios extends Controller{
     }
     private function longitud_nombre($nombre_usuario)
     {
-        if (strlen($nombre_usuario) < 4) {
+        if (strlen($nombre_usuario) <= 4 || strlen($nombre_usuario)<=1) {
             return false;
         }
         return true;
@@ -148,56 +170,48 @@ class Usuarios extends Controller{
     }
     public function login()
     {
-        // Obtener los datos del formulario
         $nombre_usuario = $this->request->getPost('nombre_usuario');
         $password = $this->request->getPost('password');
-    
-        // Cargar el modelo de Usuario
+
         $usuarioModel = new Usuario();
-    
-        // Buscar el usuario por nombre de usuario
+
         $usuario = $usuarioModel->where('nombre_usuario', $nombre_usuario)->first();
-    
+
         if ($usuario) {
-            // Verificar la contraseña
-            if (password_verify($password, $usuario['password'])) {
-                // Contraseña válida, establecer la sesión del usuario
-                session()->set('id_usuario', $usuario['id_usuario']); // Aquí establecemos la sesión del usuario
-    
-                // Redirigir a la página de inicio después del inicio de sesión exitoso
-                return redirect()->to('usuarios/'); // Ruta correcta
+            $contrasenia = $this->desencriptar($usuario['password'], 'Hola123.');
+            
+            if ($contrasenia === $password) {
+                session()->set('id_usuario', $usuario['id_usuario']);
+                return redirect()->to('usuarios/');
             } else {
-                // Contraseña incorrecta, redirigir al formulario de inicio de sesión con un mensaje de error
                 $session = session();
                 $session->setFlashdata("mensaje", "Contraseña Incorrecta");
                 return redirect()->back()->withInput();
             }
         } else {
-            // Usuario no encontrado, redirigir al formulario de inicio de sesión con un mensaje de error
             $session = session();
             $session->setFlashdata("mensaje", "Usuario no encontrado");
             return redirect()->back()->withInput();
         }
-    }    
+    }
+  
     public function actualizar($id_usuario = null){
         $usuario = new Usuario();
-        $id = $this->request->getVar('id'); // Obtener el ID del usuario a actualizar
+        $id = $this->request->getVar('id'); 
         $nombre_usuario = $this->limpiar_cadena($this->request->getVar('nombre_usuario'));
         $password = $this->limpiar_cadena($this->request->getVar('password'));
         $tipo_usuario = $this->limpiar_cadena($this->request->getVar('tipo_usuario'));
         $estado_usuario = $this->limpiar_cadena($this->request->getVar('estado_usuario'));
         $confirmar_password = $this->limpiar_cadena($this->request->getVar('confirmar_password'));
         
-        // Verificar la longitud y la complejidad de la contraseña
         if (!$this->longitud_nombre($nombre_usuario)) {
             $sesion = session();
             $sesion->setFlashdata("mensaje", "El nombre de usuario debe tener mínimo 4 caracteres y la contraseña debe tener mínimo 8 caracteres.");
             return redirect()->back()->withInput();
         }
     
-        // Encriptar la contraseña antes de actualizar si se proporciona una nueva contraseña
-        if (!empty($password) && !empty($confirmar_password) && $password === $confirmar_password) {
-            // Verificar si las contraseñas coinciden
+        // Verificar si se proporciona una nueva contraseña y si coincide con la confirmación
+        if (!empty($password) && $password === $confirmar_password) {
             if (!$this->coincidir_password($password, $confirmar_password)) {
                 $sesion = session();
                 $sesion->setFlashdata("mensaje","Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
@@ -208,52 +222,63 @@ class Usuarios extends Controller{
                 $sesion->setFlashdata("mensaje", "La contraseña debe contener al menos un número, una letra minúscula, una letra mayúscula y un carácter especial.");
                 return redirect()->back()->withInput();
             }
-            $password_encriptada = password_hash($password, PASSWORD_DEFAULT);
-
+            // Encriptar la nueva contraseña
+            $password_encriptada = $this->encriptar($password, 'Hola123.');
         } else {
-            // Mantener la contraseña actual si no se proporciona una nueva contraseña
-            $usuario_actual = $usuario->find($id); // Obtener el usuario actual desde la base de datos
+            // Si no se proporciona una nueva contraseña, mantener la contraseña existente
+            $usuario_actual = $usuario->find($id); 
             $password_encriptada = $usuario_actual['password'];
         }
     
-        // Construir el array de datos a actualizar
+        // Preparar los datos para la actualización
         $datos = [
             "nombre_usuario" => $nombre_usuario,
             "tipo_usuario" => $tipo_usuario,
             "estado_usuario" => $estado_usuario
         ];
     
-        // Si hay una nueva contraseña, agregarla al array de datos
+        // Agregar la contraseña encriptada si se proporciona una nueva
         if (!empty($password_encriptada)) {
             $datos["password"] = $password_encriptada;
         }
     
-        // Actualizar el usuario con la cláusula "where" para especificar qué fila actualizar
+        // Actualizar el usuario en la base de datos
         $usuario->update($id, $datos);
     
         return $this->response->redirect(site_url('usuarios'));
     }
+    
     
 
     public function editar($id_usuario=null){
         $usuario = new Usuario();
         $datos['usuario']= $usuario->where('id_usuario',$id_usuario)->first();
         
-        // Verificar si existe un usuario con el ID proporcionado
         if (!$datos['usuario']) {
-            // Manejar el caso en el que no se encuentre un usuario con el ID dado
             return redirect()->back()->with('error', 'Usuario no encontrado');
         }
         
-        // Desencriptar la contraseña si está encriptada
-        if (!empty($datos['usuario']['password'])) {
-            $datos['usuario']['password'] = ''; // Limpiar la contraseña para evitar su visualización
-        }
-    
+        // Desencriptar la contraseña para mostrarla en el formulario
+        $datos['usuario']['password'] = $this->desencriptar($datos['usuario']['password'], 'Hola123.');
+        
         $datos['cabecera2'] = view('template/cabecera_form');
         $datos['piepagina'] = view('template/piepagina');
+        
         return view("usuarios/actualizar_usuarios", $datos);
     }
     
     
+    public function encriptar($password, $clave) {
+        $iv = random_bytes(16); 
+        $texto_encriptado = openssl_encrypt($password, 'aes-256-cbc', $clave, 0, $iv);
+        return base64_encode($iv . $texto_encriptado); 
+    }
+    
+    public function desencriptar($password, $clave) {
+        $datos = base64_decode($password);
+        $iv = substr($datos, 0, 16); 
+        $password = substr($datos, 16);
+        $password = openssl_decrypt($password, 'aes-256-cbc', $clave, 0, $iv);
+        return $password;
+    }
 }

@@ -20,7 +20,7 @@
                             <label class="form-control-sm" for="password"><strong>Password</strong></label>
                         </div>
                         <div class="col-sm-12 col-md-7 col-lg-7">
-                            <span><input class="form-control form-control form-control mb-2" type="password" value="<?=$usuario['password']?>" name="password" id="password" placeholder="Ingresa tu Password"  /></span>
+                            <span><input class="form-control form-control form-control mb-2" type="text" value="<?=$usuario['password']?>" name="password" id="password" placeholder="Ingresa tu Password"  /></span>
                         </div>
                         <div class="col-sm-12 col-md-5 col-lg-5">
                             <label class="form-control-sm" for="confirmar_password"><strong>Confirmar Password</strong></label>
@@ -32,7 +32,7 @@
                             <label class="form-control-sm" for="tipo_usuario"><strong>Tipo de Usuario</strong></label>
                         </div>
                         <div class="col-sm-12 col-md-7 col-lg-7">
-                            <select id="tipo_usuario" name="tipo_usuario" class="form-select mb-2" name="tipo_usuario">
+                            <select id="tipo_usuario" name="tipo_usuario" class="form-select mb-2">
                                 <option value="Taquillero">Taquillero</option>
                                 <option value="Administrador">Administrador</option>
                             </select>
@@ -41,7 +41,7 @@
                             <label class="form-control-sm" for="estado_usuario"><strong>Estado</strong></label>
                         </div>
                         <div class="col-sm-12 col-md-7 col-lg-7">
-                            <select id="estado_usuario" name="estado_usuario" class="form-select mb-2" name="tipo_usuario">
+                            <select id="estado_usuario" name="estado_usuario" class="form-select mb-2">
                                 <option value="Activo">Activo</option>
                                 <option value="Inactivo">Inactivo</option>
                             </select>
