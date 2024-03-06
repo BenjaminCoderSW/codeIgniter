@@ -1,0 +1,14 @@
+CRITICAL - 2024-03-06 03:42:43 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "taquilla/pincipal_taquilla.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('taquilla/pincipal_taquilla.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('taquilla/pincipal_taquilla', [], true)
+ 3 APPPATH\Controllers\Taquilla.php(8): view('taquilla/pincipal_taquilla')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Taquilla->index()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Taquilla))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 04:19:03 --> Error: Class "App\Filters\AuthFilter" not found
+in SYSTEMPATH\Filters\Filters.php on line 175.
+ 1 SYSTEMPATH\CodeIgniter.php(474): CodeIgniter\Filters\Filters->run('taquilla', 'before')
+ 2 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 3 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

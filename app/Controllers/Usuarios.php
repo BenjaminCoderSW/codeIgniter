@@ -5,10 +5,6 @@ use CodeIgniter\Controller;
 use App\Models\Usuario;
 class Usuarios extends Controller{
 
-    public function index()
-    {
-        return view('principal/home');
-    }
 
     public function usuarios_view()
 {
@@ -18,7 +14,7 @@ class Usuarios extends Controller{
 
     $filtro_tipo_usuario = $this->request->getGet('tipo_usuario');
     $filtro_estado_usuario = $this->request->getGet('estado_usuario');
-    $filtro_nombre_usuario = $this->request->getGet('u');
+    $filtro_nombre_usuario =$this->limpiar_cadena($this->request->getGet('u'));
 
     if (!session()->has('usuario_id')) {
         $query = $usuarios;
@@ -168,81 +164,50 @@ class Usuarios extends Controller{
         $usuario->where('id_usuario',$id_usuario)->delete($id_usuario);
         return $this->response->redirect(site_url('usuarios'));
     }
-    public function login()
-    {
-        $nombre_usuario = $this->request->getPost('nombre_usuario');
-        $password = $this->request->getPost('password');
+    
 
-        $usuarioModel = new Usuario();
 
-        $usuario = $usuarioModel->where('nombre_usuario', $nombre_usuario)->first();
-
-        if ($usuario) {
-            $contrasenia = $this->desencriptar($usuario['password'], 'Hola123.');
-            
-            if ($contrasenia === $password) {
-                session()->set('id_usuario', $usuario['id_usuario']);
-                return redirect()->to('usuarios/');
-            } else {
-                $session = session();
-                $session->setFlashdata("mensaje", "Contraseña Incorrecta");
-                return redirect()->back()->withInput();
-            }
-        } else {
-            $session = session();
-            $session->setFlashdata("mensaje", "Usuario no encontrado");
-            return redirect()->back()->withInput();
-        }
-    }
   
     public function actualizar($id_usuario = null){
         $usuario = new Usuario();
         $id = $this->request->getVar('id'); 
-        $nombre_usuario = $this->limpiar_cadena($this->request->getVar('nombre_usuario'));
-        $password = $this->limpiar_cadena($this->request->getVar('password'));
-        $tipo_usuario = $this->limpiar_cadena($this->request->getVar('tipo_usuario'));
-        $estado_usuario = $this->limpiar_cadena($this->request->getVar('estado_usuario'));
-        $confirmar_password = $this->limpiar_cadena($this->request->getVar('confirmar_password'));
+        $nombre_usuario=$this->limpiar_cadena($this->request->getVar('nombre_usuario'));
+        $password=$this->limpiar_cadena($this->request->getVar('password'));
+        $tipo_usuario=$this->limpiar_cadena($this->request->getVar('tipo_usuario'));
+        $estado_usuario=$this->limpiar_cadena($this->request->getVar('estado_usuario'));
+        $confirmar_password =$this->limpiar_cadena( $this->request->getVar('confirmar_password'));
+        //$usuario_existente = $usuario->where('nombre_usuario', $nombre_usuario)->first();
         
-        if (!$this->longitud_nombre($nombre_usuario)) {
+        if (!$this->longitud_valida($nombre_usuario, $password)) {
             $sesion = session();
             $sesion->setFlashdata("mensaje", "El nombre de usuario debe tener mínimo 4 caracteres y la contraseña debe tener mínimo 8 caracteres.");
             return redirect()->back()->withInput();
         }
-    
-        // Verificar si se proporciona una nueva contraseña y si coincide con la confirmación
-        if (!empty($password) && $password === $confirmar_password) {
-            if (!$this->coincidir_password($password, $confirmar_password)) {
-                $sesion = session();
-                $sesion->setFlashdata("mensaje","Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
-                return redirect()->back()->withInput();
-            }
-            if (!$this->contrasena_fuerte($password)) {
-                $sesion = session();
-                $sesion->setFlashdata("mensaje", "La contraseña debe contener al menos un número, una letra minúscula, una letra mayúscula y un carácter especial.");
-                return redirect()->back()->withInput();
-            }
-            // Encriptar la nueva contraseña
+        if (!$this->contrasena_fuerte($password)) {
+            $sesion = session();
+            $sesion->setFlashdata("mensaje", "La contraseña debe contener al menos un número, una letra minúscula, una letra mayúscula y un carácter especial.");
+            return redirect()->back()->withInput();
+        }
+        if (!$this->es_valido($nombre_usuario, $password, $confirmar_password, $tipo_usuario, $estado_usuario)) {
+            $sesion = session();
+            $sesion->setFlashdata("mensaje", "Por favor, completa todos los campos obligatorios.");
+            return redirect()->back()->withInput();
+        }
+        if (!$this->coincidir_password($password,$confirmar_password)) {
+            $sesion = session();
+            $sesion->setFlashdata("mensaje","Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+            return redirect()->back()->withInput();
+        }
+        
             $password_encriptada = $this->encriptar($password, 'Hola123.');
-        } else {
-            // Si no se proporciona una nueva contraseña, mantener la contraseña existente
-            $usuario_actual = $usuario->find($id); 
-            $password_encriptada = $usuario_actual['password'];
-        }
+
+            $datos = [
+                "nombre_usuario" => $nombre_usuario,
+                "password" => $password_encriptada,
+                "tipo_usuario" => $tipo_usuario,
+                "estado_usuario" => $estado_usuario
+            ];
     
-        // Preparar los datos para la actualización
-        $datos = [
-            "nombre_usuario" => $nombre_usuario,
-            "tipo_usuario" => $tipo_usuario,
-            "estado_usuario" => $estado_usuario
-        ];
-    
-        // Agregar la contraseña encriptada si se proporciona una nueva
-        if (!empty($password_encriptada)) {
-            $datos["password"] = $password_encriptada;
-        }
-    
-        // Actualizar el usuario en la base de datos
         $usuario->update($id, $datos);
     
         return $this->response->redirect(site_url('usuarios'));
@@ -258,7 +223,6 @@ class Usuarios extends Controller{
             return redirect()->back()->with('error', 'Usuario no encontrado');
         }
         
-        // Desencriptar la contraseña para mostrarla en el formulario
         $datos['usuario']['password'] = $this->desencriptar($datos['usuario']['password'], 'Hola123.');
         
         $datos['cabecera2'] = view('template/cabecera_form');

@@ -69,7 +69,9 @@ class Filters extends BaseConfig
     public array $filters = [
         'auth' => [
             'before' => [
-                'usuarios','usuarios/crear' // Aquí defines las rutas que deseas proteger con el filtro de autenticación
+                'usuarios','usuarios/crear' ,'usuarios/borrar/(:num)', 
+                'usuarios/editar/(:num)' , 'usuarios/guardar', 
+                'usuarios/actualizar', 'taquilla'
             ],
         ],
     ];

@@ -26,11 +26,11 @@
           <a class="nav-link" href="#">Peliculas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Taquilla</a>
+          <a class="nav-link" href="<?=base_url('taquilla')?>">Taquilla</a>
         </li>
       </ul>
       <button class="btn btn-danger m-2" type="submit">Perfil</button>
-      <button class="btn btn-outline-danger" type="submit">Salir</button>
+      <a class="btn btn-danger" aria-current="page" href="<?=base_url('salir')?>">Salir</a>
     </div>
   </div>
 </nav>
