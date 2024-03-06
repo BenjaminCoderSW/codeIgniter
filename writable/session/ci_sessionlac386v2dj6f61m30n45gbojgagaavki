@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1709760705;_ci_previous_url|s:49:"http://localhost:90/codeIgniter/public/index.php/";mensaje|s:21:"Usuario no encontrado";__ci_vars|a:2:{s:7:"mensaje";s:3:"old";s:13:"_ci_old_input";s:3:"old";}_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:14:"nombre_usuario";s:5:"Croco";s:8:"password";s:7:"1234567";}}
