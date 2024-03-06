@@ -12,3 +12,46 @@ in SYSTEMPATH\Filters\Filters.php on line 175.
  1 SYSTEMPATH\CodeIgniter.php(474): CodeIgniter\Filters\Filters->run('taquilla', 'before')
  2 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  3 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-06 21:25:35 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\laragon\www\codeIgniter\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\codeIgniter\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'cine', 3306, '', 0)
+#1 C:\laragon\www\codeIgniter\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\codeIgniter\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\codeIgniter\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeIgniter\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeIgniter\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\codeIgniter\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\codeIgniter\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#8 C:\laragon\www\codeIgniter\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\laragon\www\codeIgniter\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\codeIgniter\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\laragon\www\codeIgniter\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\codeIgniter\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\codeIgniter\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\codeIgniter\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\codeIgniter\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\codeIgniter\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\codeIgniter\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\codeIgniter\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#7 C:\laragon\www\codeIgniter\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\laragon\www\codeIgniter\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\codeIgniter\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-06 21:25:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `nombre_usuario` = :nombre_usuario:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
