@@ -24,6 +24,7 @@ class Database extends Config
     /**
      * The default database connection.
      */
+    // Estoy en la rama principal main
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
