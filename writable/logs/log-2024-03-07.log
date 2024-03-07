@@ -1,0 +1,654 @@
+ERROR - 2024-03-07 19:03:47 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'u954703204_donaji'@'localhost' (using password: YES) in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:03:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `nombre_usuario` = :nombre_usuario:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:07:07 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'u954703204_donaji'@'187.228.136.184' (using password: YES) in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('cinetickett.com', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'187.228.136.184' (using password: YES) in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:07:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'187.228.136.184' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `nombre_usuario` = :nombre_usuario:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:07:57 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for http failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('http://cinetick...', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#7 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for http failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('http://cinetick...', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for http failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:07:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for http failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `nombre_usuario` = :nombre_usuario:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:07:59 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for http failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('http://cinetick...', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#7 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for http failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('http://cinetick...', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for http failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:07:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for http failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `nombre_usuario` = :nombre_usuario:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:08:20 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'u954703204_donaji'@'187.228.136.184' (using password: YES) in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('191.101.79.91', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'187.228.136.184' (using password: YES) in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:08:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'187.228.136.184' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `nombre_usuario` = :nombre_usuario:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:14:50 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for  191.101.79.52 failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect(' 191.101.79.52', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#7 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for  191.101.79.52 failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect(' 191.101.79.52', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for  191.101.79.52 failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(676): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\cine\app\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:14:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for  191.101.79.52 failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `nombre_usuario` = :nombre_usuario:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(270): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Login.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->loggeo()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:30:52 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#7 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:30:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+ORDER BY `id_usuario` ASC', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:30:58 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#7 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:30:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+ORDER BY `id_usuario` ASC', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:30:58 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#7 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:30:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+ORDER BY `id_usuario` ASC', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:30:58 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#7 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:30:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+ORDER BY `id_usuario` ASC', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:30:58 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#7 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:30:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+ORDER BY `id_usuario` ASC', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-03-07 19:39:22 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\laragon\\www\\...', 185)
+#1 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#7 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#9 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#10 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('srv867.hstgr.io', 'u954703204_dona...', 'X=Uf8TJz9~', 'u954703204_cine', 3306, '', 0)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#8 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#9 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido.  in C:\laragon\www\cine\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\cine\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\cine\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\cine\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\cine\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\cine\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\cine\app\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\cine\system\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+#7 C:\laragon\www\cine\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+#8 C:\laragon\www\cine\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\cine\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-03-07 19:39:22 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for srv867.hstgr.io failed: Host desconocido. 
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+ORDER BY `id_usuario` ASC', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Usuarios.php(32): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Usuarios->usuarios_view()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuarios))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
