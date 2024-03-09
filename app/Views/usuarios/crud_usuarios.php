@@ -1,3 +1,4 @@
+
 <?=$cabecera?>
 <br>
 <div class="my-2 row">
@@ -63,5 +64,4 @@
                 <?php endfor; ?>
             </ul>
         </nav>
-
 <?=$piepagina?>
