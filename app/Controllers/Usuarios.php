@@ -14,8 +14,21 @@ class Usuarios extends Controller{
 
     $filtro_tipo_usuario = $this->request->getGet('tipo_usuario');
     $filtro_estado_usuario = $this->request->getGet('estado_usuario');
-    $filtro_nombre_usuario =$this->limpiar_cadena($this->request->getGet('u'));
+    $filtro_nombre_usuario = $this->limpiar_cadena($this->request->getGet('u'));
 
+    // Obtener el total de usuarios
+    $total_usuarios = count($usuarios->findAll());
+
+    // Número de usuarios por página
+    $usuarios_por_pagina = 10;
+
+    // Calcular el total de páginas
+    $total_pages = ceil($total_usuarios / $usuarios_por_pagina);
+
+    // Obtener la página actual
+    $current_page = $this->request->getVar('page') ?? 1;
+
+    // Si no hay sesión de usuario
     if (!session()->has('usuario_id')) {
         $query = $usuarios;
 
@@ -29,13 +42,28 @@ class Usuarios extends Controller{
             $query = $query->like('nombre_usuario', $filtro_nombre_usuario);
         }
 
-        $datos['usuarios'] = $query->orderBy('id_usuario', 'ASC')->findAll();
+        // Aplicar la paginación
+        $offset = ($current_page - 1) * $usuarios_por_pagina;
+        $datos['usuarios'] = $query->orderBy('id_usuario', 'ASC')->findAll($usuarios_por_pagina, $offset);
+
+        // Pasar datos del paginador a la vista
+        $datos['total_pages'] = $total_pages;
+        $datos['current_page'] = $current_page;
 
         return view('usuarios/crud_usuarios', $datos);
     }
-    $datos['usuarios'] = $usuarios->orderBy('id_usuario', 'ASC')->findAll();
+
+    // Si hay sesión de usuario
+    $offset = ($current_page - 1) * $usuarios_por_pagina;
+    $datos['usuarios'] = $usuarios->orderBy('id_usuario', 'ASC')->findAll($usuarios_por_pagina, $offset);
+
+    // Pasar datos del paginador a la vista
+    $datos['total_pages'] = $total_pages;
+    $datos['current_page'] = $current_page;
+
     return view('usuarios/crud_usuarios', $datos);
 }
+
 
 
     public function crear_usuario_view()
