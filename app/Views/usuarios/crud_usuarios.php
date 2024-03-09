@@ -49,4 +49,9 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <nav aria-label="Page navigation example" style="background-color: rgba(255, 255, 255, 1); color: white; padding: 5px;">
+            <ul class="pagination justify-content-center">
+                <?= $pager->links() ?>
+            </ul>
+        </nav>
 <?=$piepagina?>
