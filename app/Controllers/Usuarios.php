@@ -14,7 +14,9 @@ class Usuarios extends Controller{
 
     $filtro_tipo_usuario = $this->request->getGet('tipo_usuario');
     $filtro_estado_usuario = $this->request->getGet('estado_usuario');
-    $filtro_nombre_usuario =$this->limpiar_cadena($this->request->getGet('u'));
+    $filtro_nombre_usuario = $this->limpiar_cadena($this->request->getGet('u'));
+
+    $pager = \Config\Services::pager();
 
     if (!session()->has('usuario_id')) {
         $query = $usuarios;
@@ -29,11 +31,13 @@ class Usuarios extends Controller{
             $query = $query->like('nombre_usuario', $filtro_nombre_usuario);
         }
 
-        $datos['usuarios'] = $query->orderBy('id_usuario', 'ASC')->findAll();
+        $datos['usuarios'] = $query->orderBy('id_usuario', 'ASC')->paginate(7);
+        $datos['pager'] = $usuarios->pager;
 
         return view('usuarios/crud_usuarios', $datos);
     }
-    $datos['usuarios'] = $usuarios->orderBy('id_usuario', 'ASC')->findAll();
+    $datos['usuarios'] = $usuarios->orderBy('id_usuario', 'ASC')->paginate(7);
+    $datos['pager'] = $usuarios->pager;
     return view('usuarios/crud_usuarios', $datos);
 }
 
