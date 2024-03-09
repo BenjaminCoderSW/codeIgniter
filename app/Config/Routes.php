@@ -5,6 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+// La diagonal es la parte que se agrega a la URL, Login es el controlador, index es la funcion 
 $routes->get('/', 'Login::index');
 $routes->get('usuarios', 'Usuarios::usuarios_view',['filter' => 'auth']);
 $routes->get('usuarios/crear', 'Usuarios::crear_usuario_view',['filter' => 'auth']);

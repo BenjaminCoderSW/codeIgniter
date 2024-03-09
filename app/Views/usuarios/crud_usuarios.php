@@ -1,3 +1,4 @@
+
 <?=$cabecera?>
 <br>
 <div class="my-2 row">
@@ -26,6 +27,7 @@
 </div>
     <a href="<?=base_url('usuarios/crear')?>" class="btn btn-danger mb-2" type="button">Crear un Usuario</a>
         <br>
+
         <table class="table table-dark mt-2">
             <thead class="table-ligth">
                 <tr>
@@ -49,9 +51,17 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <nav aria-label="Page navigation example" style="background-color: rgba(255, 255, 255, 1); color: white; padding: 5px;">
-            <ul class="pagination justify-content-center">
-                <?= $pager->links() ?>
+
+        <!-- Paginador -->
+        <nav aria-label="...">
+            <ul class="pagination pagination-lg">
+                <!-- Lógica para generar los enlaces de paginación -->
+                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                    <li class="page-item <?= ($i == $current_page) ? 'active' : '' ?>" aria-current="page">
+                        <!-- Se crean los botones dinamicamente -->
+                        <a class="page-link" href="<?= base_url('usuarios?page=' . $i) ?>"><?= $i ?></a>
+                    </li>
+                <?php endfor; ?>
             </ul>
         </nav>
 <?=$piepagina?>
