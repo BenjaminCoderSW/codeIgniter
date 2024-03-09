@@ -24,13 +24,13 @@ class Database extends Config
     /**
      * The default database connection.
      */
-    // Estoy en la rama principal main
+    
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => 'Benji2003',
-        'database'     => 'cine',
+        'hostname'     => 'srv867.hstgr.io',
+        'username'     => 'u954703204_donaji',
+        'password'     => 'X=Uf8TJz9~',
+        'database'     => 'u954703204_cine',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
