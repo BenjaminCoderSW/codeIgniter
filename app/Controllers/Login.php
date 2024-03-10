@@ -7,7 +7,7 @@ class Login extends Controller{
 
     public function index()
     {
-        return view('principal/home');
+        return view('principal/login');
     }
 
     public function loggeo()
@@ -29,7 +29,7 @@ class Login extends Controller{
                     session()->set('estado_usuario', $usuario['estado_usuario']);
     
                     if ($usuario['tipo_usuario'] == 'Administrador') {
-                        return redirect()->to('usuarios/');
+                        return redirect()->to('home/');
                     } elseif ($usuario['tipo_usuario'] == 'Taquillero') {
                         return redirect()->to('taquilla');
                     }
