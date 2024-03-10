@@ -30,3 +30,5 @@ $routes->get('taquilla', 'Taquilla::index');
 $routes->get('salir', 'Login::logout');
 //ruta para la vista del HOME
 $routes->get('home', 'Home::index');
+//ruta para la vista del de peliculas
+$routes->get('peliculas', 'Peliculas::index');
