@@ -16,6 +16,8 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
+    
+    // Estoy en la rama
     public string $baseURL = 'http://localhost:90/cine/public';
 
     /**
