@@ -11,43 +11,47 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body class="background2">
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">BenVani Cineplex</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?=base_url('usuarios')?>">Usuarios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Peliculas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?=base_url('taquilla')?>">Taquilla</a>
-        </li>
-      </ul>
-      <button class="btn btn-danger m-2" type="submit">Perfil</button>
-      <a class="btn btn-danger" aria-current="page" href="<?=base_url('salir')?>">Salir</a>
+  <div class="">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+      <div class="container">
+        <a class="navbar-brand" href="#">BenVani Cineplex</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?=base_url('usuarios')?>">Usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Peliculas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?=base_url('taquilla')?>">Taquilla</a>
+            </li>
+          </ul>
+          <button class="btn btn-danger m-2" type="submit">Perfil</button>
+          <a class="btn btn-danger" aria-current="page" href="<?=base_url('salir')?>">Salir</a>
+        </div>
+      </div>
+    </nav>
+    <div class="text-center p-1" style="background-color:rgb(0,0,0,0.4);">
+      <h1 class="letra"><strong>Sistema Taquillero</strong></h1>
     </div>
   </div>
-</nav>
-    <div class="text-center p-1" style="background-color:rgb(0,0,0,0.4);">
-        <h1 class="letra"><strong>Sistema Taquillero</strong></h1>
-    </div>
-    <div class="container">
+  <!-- Contenido de la página -->
+  <div class="container-fluid">
+    <?php 
+        if(session('mensaje')){ 
+    ?>
+
+    <div class="alert alert-dark" role="alert">
         <?php 
-            if(session('mensaje')){ 
+            echo session('mensaje');
         ?>
+    </div>
 
-        <div class="alert alert-dark" role="alert">
-            <?php 
-                echo session('mensaje');
-            ?>
-        </div>
-
-        <?php
-            }
-        ?>
+    <?php
+        }
+    ?>
+  

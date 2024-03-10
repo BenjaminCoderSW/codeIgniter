@@ -67,7 +67,7 @@
     color: white;
 }
 .pagination a.page-link {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 16px; 
 
 }

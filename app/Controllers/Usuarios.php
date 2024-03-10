@@ -7,31 +7,16 @@ class Usuarios extends Controller{
 
 
     public function usuarios_view()
-{
-    $usuarios = new Usuario();
-    $datos['cabecera'] = view('template/cabecera');
-    $datos['piepagina'] = view('template/piepagina');
+    {
+        $usuarios = new Usuario();
+        $datos['cabecera'] = view('template/cabecera');
+        $datos['piepagina'] = view('template/piepagina');
 
-    $filtro_tipo_usuario = $this->request->getGet('tipo_usuario');
-    $filtro_estado_usuario = $this->request->getGet('estado_usuario');
-    $filtro_nombre_usuario = $this->limpiar_cadena($this->request->getGet('u'));
+        $filtro_tipo_usuario = $this->request->getGet('tipo_usuario');
+        $filtro_estado_usuario = $this->request->getGet('estado_usuario');
+        $filtro_nombre_usuario = $this->limpiar_cadena($this->request->getGet('u'));
 
-    // Obtener el total de usuarios
-    $total_usuarios = count($usuarios->findAll());
-
-    // Número de usuarios por página
-    $usuarios_por_pagina = 10;
-
-    // Calcular el total de páginas
-    $total_pages = ceil($total_usuarios / $usuarios_por_pagina);
-
-    // Obtener la página actual
-    $current_page = $this->request->getVar('page') ?? 1;
-
-    // Si no hay sesión de usuario
-    if (!session()->has('usuario_id')) {
         $query = $usuarios;
-
         if ($filtro_tipo_usuario && $filtro_tipo_usuario != 'tipo_usuario') {
             $query = $query->where('tipo_usuario', $filtro_tipo_usuario);
         }
@@ -41,28 +26,33 @@ class Usuarios extends Controller{
         if ($filtro_nombre_usuario) {
             $query = $query->like('nombre_usuario', $filtro_nombre_usuario);
         }
+        $total_usuarios = count($query->findAll());
 
-        // Aplicar la paginación
+        $usuarios_por_pagina = 5;
+
+        $total_pages = ceil($total_usuarios / $usuarios_por_pagina);
+
+        $current_page = $this->request->getVar('page') ?? 1;
+
         $offset = ($current_page - 1) * $usuarios_por_pagina;
-        $datos['usuarios'] = $query->orderBy('id_usuario', 'ASC')->findAll($usuarios_por_pagina, $offset);
 
-        // Pasar datos del paginador a la vista
+        $query = $usuarios;
+        if ($filtro_tipo_usuario && $filtro_tipo_usuario != 'tipo_usuario') {
+            $query = $query->where('tipo_usuario', $filtro_tipo_usuario);
+        }
+        if ($filtro_estado_usuario && $filtro_estado_usuario != 'estado_usuario') {
+            $query = $query->where('estado_usuario', $filtro_estado_usuario);
+        }
+        if ($filtro_nombre_usuario) {
+            $query = $query->like('nombre_usuario', $filtro_nombre_usuario);
+        }
+        $datos['usuarios'] = $query->orderBy('nombre_usuario', 'ASC')->findAll($usuarios_por_pagina, $offset);
+
         $datos['total_pages'] = $total_pages;
         $datos['current_page'] = $current_page;
 
         return view('usuarios/crud_usuarios', $datos);
     }
-
-    // Si hay sesión de usuario
-    $offset = ($current_page - 1) * $usuarios_por_pagina;
-    $datos['usuarios'] = $usuarios->orderBy('id_usuario', 'ASC')->findAll($usuarios_por_pagina, $offset);
-
-    // Pasar datos del paginador a la vista
-    $datos['total_pages'] = $total_pages;
-    $datos['current_page'] = $current_page;
-
-    return view('usuarios/crud_usuarios', $datos);
-}
 
 
 
@@ -189,6 +179,11 @@ class Usuarios extends Controller{
     public function borrar_usuario($id_usuario=null){
         $usuario = new Usuario();
         $datos=$usuario->where('id_usuario',$id_usuario)->first();
+        if($datos['nombre_usuario']==='Tigger'){
+            $sesion = session();
+            $sesion->setFlashdata("mensaje", "Este Usuario no se puede eliminar.");
+            return redirect()->back()->withInput();
+        }
         $usuario->where('id_usuario',$id_usuario)->delete($id_usuario);
         return $this->response->redirect(site_url('usuarios'));
     }
