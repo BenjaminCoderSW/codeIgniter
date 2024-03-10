@@ -63,16 +63,25 @@ $filtro_nombre_usuario = isset($_GET['u']) ? $_GET['u'] : '';
         </table>
 
        <!-- Paginador -->
-        <nav aria-label="...">
-            <ul class="pagination pagination-lg">
-                <!-- Lógica para generar los enlaces de paginación -->
-                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                    <li class="page-item <?= ($i == $current_page) ? 'active' : '' ?>" aria-current="page">
-                        <!-- Se crean los botones dinamicamente -->
-                        <a class="page-link" href="<?= base_url('usuarios?page=' . $i) . '&' . http_build_query($_GET) ?>"><?= $i ?></a>
-                    </li>
-                <?php endfor; ?>
-            </ul>
-        </nav>
+<nav aria-label="...">
+    <ul class="pagination pagination-lg">
+        <!-- Lógica para generar los enlaces de paginación -->
+        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+            <li class="page-item <?= ($i == $current_page) ? 'active' : '' ?>" aria-current="page">
+                <!-- Se crean los botones dinamicamente -->
+                <?php
+                // Obtener los parámetros actuales de la URL
+                $queryParams = $_GET;
+                // Agregar el número de página actual a los parámetros
+                $queryParams['page'] = $i;
+                // Generar la URL con los nuevos parámetros
+                $url = base_url('usuarios') . '?' . http_build_query($queryParams);
+                ?>
+                <a class="page-link" href="<?= $url ?>"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
+    </ul>
+</nav>
+
 
 <?=$piepagina?>
