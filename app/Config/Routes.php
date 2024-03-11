@@ -25,10 +25,10 @@ $routes->get('usuarios/editar/(:num)', 'Usuarios::editar/$1',['filter' => 'auth'
 //ruta para actualizar ese usuario
 $routes->post('usuarios/actualizar', 'Usuarios::actualizar', ['filter' => 'auth']);
 //ruta para taquilla
-$routes->get('taquilla', 'Taquilla::index');
+$routes->get('taquilla', 'Taquilla::index', ['filter' => 'auth']);
 //ruta para salir de la sesión
 $routes->get('salir', 'Login::logout');
 //ruta para la vista del HOME
-$routes->get('home', 'Home::index');
+$routes->get('home', 'Home::index', ['filter' => 'auth']);
 //ruta para la vista del de peliculas
-$routes->get('peliculas', 'Peliculas::index');
+$routes->get('peliculas', 'Peliculas::index', ['filter' => 'auth']);
