@@ -12,13 +12,39 @@
     background-attachment: fixed;
     background-size: cover;
 }
+/* Fondo del home */
 .background3 { 
-            background-image: url("../img/palo.avif");
-            width: 100%;
-            height: auto;
-            background-attachment: fixed;
-            background-size: cover;
-        }
+    background-image: url("../img/cinema-2.jpg");
+    width: 100%;
+    height: auto;
+    background-attachment: fixed;
+    background-size: cover;
+}
+/* Estilos al titulo de la vista home */
+.titulo-bienvenida {
+    color: white;
+    font-family: "Bangers", system-ui;
+    font-size: 7rem; /* Ajusta el tamaño del texto según sea necesario */
+    animation: cambio-color 5s infinite, cambio-tamaño 5s infinite; /* Combina ambas animaciones */
+}
+.titulo-bienvenida span {
+    display: block;
+}
+
+/* Animación para cambiar el color en home */
+@keyframes cambio-color {
+    0% { color: rgb(116, 116, 116); } /* Color inicial */
+    50% { color: rgb(197, 197, 197); } /* Cambio de color */
+    100% { color: rgb(116, 116, 116); } /* Cambio de color */
+}
+
+/* Animación para cambiar el tamaño en home*/
+@keyframes cambio-tamaño {
+    0% { font-size: 5rem; } /* Tamaño inicial */
+    50% { font-size: 6rem; } /* Ajusta el tamaño deseado */
+    100% { font-size: 5rem; } /* Tamaño inicial */
+}
+  
 .img{
    width:250px;
    height:250px;

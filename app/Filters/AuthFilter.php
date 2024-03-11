@@ -35,7 +35,9 @@ class AuthFilter implements FilterInterface
         if ($tipo_usuario === 'Taquillero' && 
             ($path === 'usuarios' || 
             $path === 'usuarios/crear' || 
-            $path === 'usuarios/guardar' || 
+            $path === 'usuarios/guardar' ||
+            $path === 'home' || 
+            $path === 'peliculas' ||  
             $path === 'usuarios/actualizar')) {
                 $sesion = session();
                 $sesion->setFlashdata("mensaje", "No tienes permiso para acceder a esta página.");
