@@ -53,7 +53,7 @@ $filtro_nombre_usuario = isset($_GET['u']) ? $_GET['u'] : '';
                             <form action="<?=base_url('usuarios/editar/'.$usuario['id_usuario'])?>" >
                                 <button class="btn btn-light mb-1" type="submit">Editar</button>
                             </form>
-                            <form action="<?=base_url('usuarios/borrar/'.$usuario['id_usuario'])?>" method="post" onsubmit="return confirmarEliminacion();">
+                            <form action="<?=base_url('usuarios/borrar/'.$usuario['id_usuario'])?>" method="post" onsubmit="return confirmarEliminacion('<?=$usuario['nombre_usuario']?>');">
                                 <button class="btn btn-danger" type="submit">Borrar</button>
                             </form>
                         </td>
@@ -82,6 +82,16 @@ $filtro_nombre_usuario = isset($_GET['u']) ? $_GET['u'] : '';
         <?php endfor; ?>
     </ul>
 </nav>
-
-
-<?=$piepagina?>
+</div>
+</body>
+<script>
+    function confirmarEliminacion(nombreUsuario) {
+        if (nombreUsuario === 'Tigger') {
+            alert('No se puede eliminar este usuario.');
+            return false;
+        } else {
+            return confirm("¿Estás seguro de que deseas eliminar este usuario?");
+        }
+    }
+</script>
+</html>
