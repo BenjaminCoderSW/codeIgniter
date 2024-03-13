@@ -32,3 +32,7 @@ $routes->get('salir', 'Login::logout');
 $routes->get('home', 'Home::index', ['filter' => 'auth']);
 //ruta para la vista del de peliculas
 $routes->get('peliculas', 'Peliculas::index', ['filter' => 'auth']);
+//ruta para la vista de crear una pelicula
+$routes->get('peliculas/crear', 'Peliculas::crear_pelicula_view',['filter' => 'auth']);
+//ruta para guardar una pelicula
+$routes->post('peliculas/guardar', 'Peliculas::guardar_pelicula', ['filter' => 'auth']);
