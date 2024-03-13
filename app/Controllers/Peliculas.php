@@ -129,25 +129,10 @@ class Peliculas extends Controller{
         }
         return true;
     }
-    private function longitud_nombre($nombre_usuario)
-    {
-        if (strlen($nombre_usuario) <= 4 || strlen($nombre_usuario)<=1) {
-            return false;
-        }
-        return true;
-    }
 
     private function es_valido($titulo_pelicula, $duracion, $sinopsis, $genero, $precio, $estado_pelicula)
     {
         if (empty($titulo_pelicula) || empty($duracion) || empty($sinopsis) || empty($genero) || empty($precio) || empty($estado_pelicula)) {
-            return false;
-        }
-        return true;
-    }
-    private function contrasena_fuerte($password)
-    {
-        $patron = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()-_+=])[0-9a-zA-Z!@#$%^&*()-_+=]{8,}$/';
-        if (!preg_match($patron, $password)) {
             return false;
         }
         return true;
@@ -182,96 +167,16 @@ class Peliculas extends Controller{
         $cadena=stripslashes($cadena);
         return $cadena;
     }
-    public function borrar_usuario($id_usuario=null){
-        $usuario = new Usuario();
-        $datos=$usuario->where('id_usuario',$id_usuario)->first();
+    public function borrar_pelicula($id_pelicula=null){
+        $pelicula = new Pelicula();
+        $datos=$pelicula->where('id_pelicula',$id_pelicula)->first();
         if($datos['nombre_usuario']==='Tigger'){
             $sesion = session();
             $sesion->setFlashdata("mensaje", "Este Usuario no se puede eliminar.");
             return redirect()->back()->withInput();
         }
-        $usuario->where('id_usuario',$id_usuario)->delete($id_usuario);
+        $pelicula->where('id_pelicula',$id_pelicula)->delete($id_pelicula);
         return $this->response->redirect(site_url('usuarios'));
     }
-    
-
-
-  
-    public function actualizar($id_usuario = null){
-        $usuario = new Usuario();
-        $id = $this->request->getVar('id'); 
-        $nombre_usuario=$this->limpiar_cadena($this->request->getVar('nombre_usuario'));
-        $password=$this->limpiar_cadena($this->request->getVar('password'));
-        $tipo_usuario=$this->limpiar_cadena($this->request->getVar('tipo_usuario'));
-        $estado_usuario=$this->limpiar_cadena($this->request->getVar('estado_usuario'));
-        $confirmar_password =$this->limpiar_cadena( $this->request->getVar('confirmar_password'));
-        //$usuario_existente = $usuario->where('nombre_usuario', $nombre_usuario)->first();
-        
-        if (!$this->longitud_valida($nombre_usuario, $password)) {
-            $sesion = session();
-            $sesion->setFlashdata("mensaje", "El nombre de usuario debe tener mínimo 4 caracteres y la contraseña debe tener mínimo 8 caracteres.");
-            return redirect()->back()->withInput();
-        }
-        if (!$this->contrasena_fuerte($password)) {
-            $sesion = session();
-            $sesion->setFlashdata("mensaje", "La contraseña debe contener al menos un número, una letra minúscula, una letra mayúscula y un carácter especial.");
-            return redirect()->back()->withInput();
-        }
-        if (!$this->es_valido($nombre_usuario, $password, $confirmar_password, $tipo_usuario, $estado_usuario)) {
-            $sesion = session();
-            $sesion->setFlashdata("mensaje", "Por favor, completa todos los campos obligatorios.");
-            return redirect()->back()->withInput();
-        }
-        if (!$this->coincidir_password($password,$confirmar_password)) {
-            $sesion = session();
-            $sesion->setFlashdata("mensaje","Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
-            return redirect()->back()->withInput();
-        }
-        
-            $password_encriptada = $this->encriptar($password, 'Hola123.');
-
-            $datos = [
-                "nombre_usuario" => $nombre_usuario,
-                "password" => $password_encriptada,
-                "tipo_usuario" => $tipo_usuario,
-                "estado_usuario" => $estado_usuario
-            ];
-    
-        $usuario->update($id, $datos);
-    
-        return $this->response->redirect(site_url('usuarios'));
-    }
-    
-    
-
-    public function editar($id_usuario=null){
-        $usuario = new Usuario();
-        $datos['usuario']= $usuario->where('id_usuario',$id_usuario)->first();
-        
-        if (!$datos['usuario']) {
-            return redirect()->back()->with('error', 'Usuario no encontrado');
-        }
-        
-        $datos['usuario']['password'] = $this->desencriptar($datos['usuario']['password'], 'Hola123.');
-        
-        $datos['cabecera2'] = view('template/cabecera_form');
-        $datos['piepagina'] = view('template/piepagina');
-        
-        return view("usuarios/actualizar_usuarios", $datos);
-    }
-    
-    
-    public function encriptar($password, $clave) {
-        $iv = random_bytes(16); 
-        $texto_encriptado = openssl_encrypt($password, 'aes-256-cbc', $clave, 0, $iv);
-        return base64_encode($iv . $texto_encriptado); 
-    }
-    
-    public function desencriptar($password, $clave) {
-        $datos = base64_decode($password);
-        $iv = substr($datos, 0, 16); 
-        $password = substr($datos, 16);
-        $password = openssl_decrypt($password, 'aes-256-cbc', $clave, 0, $iv);
-        return $password;
-    }
+       
 }
