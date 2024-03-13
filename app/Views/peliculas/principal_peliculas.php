@@ -30,8 +30,8 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
     <div class="col-sm-12 col-md-3 col-lg-3 mx-1 mb-2">
         <select id="estado_pelicula" name="estado_pelicula" style="border: 2px solid #DA4E4E;" class="form-select">
             <option value="">Estado de la Pelicula</option>
-            <option value="Activo" <?= ($filtro_estado_pelicula == 'Activa') ? 'selected' : '' ?>>Activa</option>
-            <option value="Inactivo" <?= ($filtro_estado_pelicula == 'Inactiva') ? 'selected' : '' ?>>Inactiva</option>
+            <option value="Activa" <?= ($filtro_estado_pelicula == 'Activa') ? 'selected' : '' ?>>Activa</option>
+            <option value="Inactiva" <?= ($filtro_estado_pelicula == 'Inactiva') ? 'selected' : '' ?>>Inactiva</option>
         </select>
     </div>
     <div class="col-sm-12 col-md-3 col-lg-3 mx-1 mb-2">
