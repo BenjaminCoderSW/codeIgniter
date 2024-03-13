@@ -1,0 +1,33 @@
+CRITICAL - 2024-03-13 03:11:32 --> ErrorException: Undefined variable $cabecera
+in APPPATH\Views\peliculas\principal_peliculas.php on line 2.
+ 1 APPPATH\Views\peliculas\principal_peliculas.php(2): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cabecera', 'C:\\laragon\\www\\cine\\app\\Views\\peliculas\\principal_peliculas.php', 2)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\cine\\app\\Views\\peliculas\\principal_peliculas.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('peliculas/principal_peliculas', [], true)
+ 5 APPPATH\Controllers\Peliculas.php(9): view('peliculas/principal_peliculas')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Peliculas->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peliculas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-13 03:19:47 --> ParseError: syntax error, unexpected token "if"
+in APPPATH\Controllers\Peliculas.php on line 20.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(288): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\cine\\app\\Controllers\\Peliculas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Peliculas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Peliculas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Peliculas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-13 03:20:21 --> ErrorException: Undefined variable $peliculas
+in APPPATH\Controllers\Peliculas.php on line 39.
+ 1 APPPATH\Controllers\Peliculas.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $peliculas', 'C:\\laragon\\www\\cine\\app\\Controllers\\Peliculas.php', 39)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Peliculas->index()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peliculas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-13 04:06:43 --> Error: Object of class App\Controllers\Peliculas could not be converted to string
+in APPPATH\Controllers\Peliculas.php on line 72.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Peliculas->guardar_pelicula()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Peliculas))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

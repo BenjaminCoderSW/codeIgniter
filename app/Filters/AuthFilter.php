@@ -37,7 +37,9 @@ class AuthFilter implements FilterInterface
             $path === 'usuarios/crear' || 
             $path === 'usuarios/guardar' ||
             $path === 'home' || 
-            $path === 'peliculas' ||  
+            $path === 'peliculas' || 
+            $path === 'peliculas/crear' ||  
+            $path === 'peliculas/guardar' ||  
             $path === 'usuarios/actualizar')) {
                 $sesion = session();
                 $sesion->setFlashdata("mensaje", "No tienes permiso para acceder a esta página.");
