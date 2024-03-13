@@ -23,22 +23,22 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-info mx-2" href="<?= base_url('peliculas/') ?>">Peliculas</a>
+                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('peliculas/') ?>">Peliculas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary mx-2" href="<?= base_url('taquilla/') ?>">Taquilla</a>
+                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('taquilla/') ?>">Taquilla</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-warning mx-2" href="<?= base_url('usuarios/') ?>">Usuarios</a>
+                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('usuarios/') ?>">Usuarios</a>
                     </li>
                 </ul>
                 <!-- Botones a la derecha -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-success mx-2" href="#">Perfil</a>
+                        <a class="nav-link btn btn-outline-success mx-2" href="#">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-danger" href="<?= base_url('salir/') ?>">Salir</a>
+                        <a class="nav-link btn btn-outline-danger" href="<?= base_url('salir/') ?>">Salir</a>
                     </li>
                 </ul>
             </div>

@@ -65,7 +65,7 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
                                 <button class="btn btn-light mb-1" type="submit">Editar</button>
                             </form>
                             <form action="<?=base_url('peliculas/borrar/'.$pelicula['id_pelicula'])?>" method="post">
-                                <button class="btn btn-danger" type="submit">Borrar</button>
+                                <button class="btn btn-danger" type="submit"  onsubmit="return confirmarEliminacion();">Borrar</button>
                             </form>
                         </td>
                     </tr>
@@ -95,4 +95,13 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
 </nav>
 </div>
 </body>
+<script>
+    function confirmarEliminacion() {
+        if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 </html>
