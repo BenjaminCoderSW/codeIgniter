@@ -12,28 +12,35 @@
 </head>
 <body class="background2">
   <div class="">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-      <div class="container">
-        <a class="navbar-brand" href="<?=base_url('home')?>">BenVani Cineplex</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="<?=base_url('usuarios')?>">Usuarios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Peliculas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?=base_url('taquilla')?>">Taquilla</a>
-            </li>
-          </ul>
-          <button class="btn btn-danger m-2" type="submit">Perfil</button>
-          <a class="btn btn-danger" aria-current="page" href="<?=base_url('salir')?>">Salir</a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="<?= base_url('home/') ?>">BenVani Cineplex</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('peliculas/') ?>">Peliculas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('taquilla/') ?>">Taquilla</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('usuarios/') ?>">Usuarios</a>
+                    </li>
+                </ul>
+                <!-- Botones a la derecha -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-success mx-2" href="#">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-danger" href="<?= base_url('salir/') ?>">Salir</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
     <div class="text-center p-1" style="background-color:rgb(0,0,0,0.4);">
       <h1 class="letra"><strong>Sistema Taquillero</strong></h1>

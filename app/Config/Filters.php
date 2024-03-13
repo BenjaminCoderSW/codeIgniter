@@ -71,7 +71,8 @@ class Filters extends BaseConfig
             'before' => [
                 'usuarios','usuarios/crear' ,'usuarios/borrar/(:num)', 
                 'usuarios/editar/(:num)' , 'usuarios/guardar', 
-                'usuarios/actualizar', 'taquilla','home','peliculas','peliculas/crear','peliculas/guardar'
+                'usuarios/actualizar', 'taquilla','home','peliculas','peliculas/crear',
+                'peliculas/guardar','peliculas/borrar/(:num)'
             ],
         ],
     ];
