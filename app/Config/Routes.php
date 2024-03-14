@@ -15,7 +15,7 @@ $routes->get('usuarios/crear', 'Usuarios::crear_usuario_view',['filter' => 'auth
 //ruta para guardar un usuario
 $routes->post('usuarios/guardar', 'Usuarios::guardar_usuario', ['filter' => 'auth']);
 //ruta para borar un usuario
-$routes->get('usuarios/borrar/(:num)', 'Usuarios::borrar_usuario/$1',['filter' => 'auth']);
+$routes->post('usuarios/borrar/(:num)', 'Usuarios::borrar_usuario/$1',['filter' => 'auth']);
 //ruta para loggear un usuario
 $routes->post('login', 'Login::loggeo');
 //no me acuerdo, creo que no hace nada, solo era un ejemplo
@@ -37,4 +37,4 @@ $routes->get('peliculas/crear', 'Peliculas::crear_pelicula_view',['filter' => 'a
 //ruta para guardar una pelicula
 $routes->post('peliculas/guardar', 'Peliculas::guardar_pelicula', ['filter' => 'auth']);
 //ruta para borar un usuario
-$routes->get('peliculas/borrar/(:num)', 'Peliculas::borrar_pelicula/$1',['filter' => 'auth']);
+$routes->post('peliculas/borrar/(:num)', 'Peliculas::borrar_pelicula/$1',['filter' => 'auth']);
