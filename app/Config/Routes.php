@@ -37,4 +37,4 @@ $routes->get('peliculas/crear', 'Peliculas::crear_pelicula_view',['filter' => 'a
 //ruta para guardar una pelicula
 $routes->post('peliculas/guardar', 'Peliculas::guardar_pelicula', ['filter' => 'auth']);
 //ruta para borar un usuario
-$routes->get('peliculas/borrar/(:num)', 'Peliculas::borrar_pelicula/$1',['filter' => 'auth']);
+$routes->post('peliculas/borrar/(:num)', 'Peliculas::borrar_pelicula/$1',['filter' => 'auth']);
