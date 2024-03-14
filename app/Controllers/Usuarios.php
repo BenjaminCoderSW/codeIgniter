@@ -1,9 +1,11 @@
-<?php 
+<?php
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Usuario;
-class Usuarios extends Controller{
+use Database;
+
+class Usuarios extends Controller {
 
 
     public function usuarios_view()
@@ -176,19 +178,15 @@ class Usuarios extends Controller{
         $cadena=stripslashes($cadena);
         return $cadena;
     }
-    public function borrar_usuario($id_usuario=null){
-        $usuario = new Usuario();
-        $datos=$usuario->where('id_usuario',$id_usuario)->first();
-        if($datos['nombre_usuario']==='Tigger'){
-            $sesion = session();
-            $sesion->setFlashdata("mensaje", "Este Usuario no se puede eliminar.");
-            return redirect()->back()->withInput();
-        }
-        $usuario->where('id_usuario',$id_usuario)->delete($id_usuario);
-        return $this->response->redirect(site_url('usuarios'));
-    }
-    
+    public function borrar_usuario($id_usuario = null)
+    {
+        $usuarioModel = new Usuario();
 
+        // Borra el usuario y sus relaciones automáticamente debido a ON DELETE CASCADE
+        $usuarioModel->delete($id_usuario);
+
+        return redirect()->to(site_url('usuarios'));
+    }
 
   
     public function actualizar($id_usuario = null){
