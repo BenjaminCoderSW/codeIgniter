@@ -59,7 +59,7 @@
                             <label class="form-control-sm" for="precio"><strong>Precio de la película</strong></label>
                         </div>
                         <div class="col-sm-12 col-md-7 col-lg-7">
-                            <span><input class="form-control form-control form-control mb-2" value="<?=$pelicula['precio']?>" name="precio" id="precio" type="number" placeholder="Ingresa el precio de la película" required /></span>
+                            <span><input class="form-control form-control form-control mb-2" step="any" value="<?=$pelicula['precio']?>" name="precio" id="precio" type="number" placeholder="Ingresa el precio de la película" required /></span>
                         </div>
                         <div class="col-sm-12 col-md-5 col-lg-5">
                             <label class="form-control-sm" for="estado_pelicula"><strong>Estado</strong></label>
