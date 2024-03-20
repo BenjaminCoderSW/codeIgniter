@@ -38,7 +38,7 @@ class Logger extends BaseConfig
      *
      * @var array|int
      */
-    public $threshold = (ENVIRONMENT === 'production') ? 4 : 9;
+    public $threshold = 9;
 
     /**
      * --------------------------------------------------------------------------
@@ -118,6 +118,20 @@ class Logger extends BaseConfig
             'path' => '',
         ],
 
+        
+        'App\Libraries\EmailLogHandler'=>
+        [
+            'handles' => [
+                'critical',
+                'alert',
+                'emergency',
+                'debug',
+                'error',
+                'info',
+                'notice',
+                'warning',
+            ],
+        ]
         /*
          * The ChromeLoggerHandler requires the use of the Chrome web browser
          * and the ChromeLogger extension. Uncomment this block to use it.
