@@ -73,7 +73,7 @@ $filtro_nombre_usuario = isset($_GET['u']) ? $_GET['u'] : '';
                 <?php
                 // Determinar el rango de botones a mostrar
                 $start = max(1, $current_page - 2);
-                $end = min($total_pages, $start + 4);
+                $end = min($total_pages, $start + 3);
 
                 // Generar botones de página
                 for ($i = $start; $i <= $end; $i++) :

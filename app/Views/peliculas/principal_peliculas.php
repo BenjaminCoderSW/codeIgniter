@@ -74,25 +74,31 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
         </table>
 
        <!-- Paginador -->
-<nav aria-label="...">
-    <ul class="pagination pagination-lg">
-        <!-- Lógica para generar los enlaces de paginación -->
-        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-            <li class="page-item <?= ($i == $current_page) ? 'active' : '' ?>" aria-current="page">
-                <!-- Se crean los botones dinamicamente -->
+       <nav aria-label="...">
+            <ul class="pagination">
+                <!-- Botón Previous -->
+                <li class="page-item <?= ($current_page == 1) ? 'disabled' : '' ?>">
+                <a class="page-link" href="<?= ($current_page == 1) ? '#' : base_url('peliculas?page=' . ($current_page - 1)) ?>">Previous</a>
+                </li>
+                <!-- Botones de páginas -->
                 <?php
-                // Obtener los parámetros actuales de la URL
-                $queryParams = $_GET;
-                // Agregar el número de página actual a los parámetros
-                $queryParams['page'] = $i;
-                // Generar la URL con los nuevos parámetros
-                $url = base_url('peliculas') . '?' . http_build_query($queryParams);
+                // Determinar el rango de botones a mostrar
+                $start = max(1, $current_page - 2);
+                $end = min($total_pages, $start + 4);
+
+                // Generar botones de página
+                for ($i = $start; $i <= $end; $i++) :
                 ?>
-                <a class="page-link" href="<?= $url ?>"><?= $i ?></a>
-            </li>
-        <?php endfor; ?>
-    </ul>
-</nav>
+                <li class="page-item <?= ($i == $current_page) ? 'active' : '' ?>">
+                    <a class="page-link" href="<?= base_url('peliculas?page=' . $i) ?>"><?= $i ?></a>
+                </li>
+                <?php endfor; ?>
+                <!-- Botón Next -->
+                <li class="page-item <?= ($current_page == $total_pages) ? 'disabled' : '' ?>">
+                <a class="page-link" href="<?= ($current_page == $total_pages) ? '#' : base_url('peliculas?page=' . ($current_page + 1)) ?>">Next</a>
+                </li>
+            </ul>
+        </nav>
 </div>
 </body>
 <script>
