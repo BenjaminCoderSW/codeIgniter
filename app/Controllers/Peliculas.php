@@ -169,8 +169,29 @@ class Peliculas extends Controller{
     }
     public function borrar_pelicula($id_pelicula=null){
         $pelicula = new Pelicula();
-        $datos=$pelicula->where('id_pelicula',$id_pelicula)->first();
-        $pelicula->where('id_pelicula',$id_pelicula)->delete($id_pelicula);
-        //return $this->response->redirect(site_url('peliculas'));
+        $datosPelicula = $pelicula->find($id_pelicula);
+    
+        // Verificar si la película existe
+        if (!$datosPelicula) {
+            // Manejar el caso en el que la película no existe
+            echo 'La película no existe.';
+            return;
+        }
+    
+        // Obtener la ruta de la imagen y eliminarla
+        $rutaImagen = '../public/uploads/' . $datosPelicula['imagen'];
+        if (file_exists($rutaImagen)) {
+            unlink($rutaImagen);
+        }
+    
+        // Eliminar la película
+        $pelicula->delete($id_pelicula);
+    
+        // Mensaje de éxito
+        echo 'Se eliminó la película "' . $datosPelicula['titulo_pelicula'] . '" con el ID: ' . $id_pelicula;
+    
+        // Redireccionar a la página principal de películas
+        return $this->response->redirect(site_url('/peliculas'));
     }
+    
 }
