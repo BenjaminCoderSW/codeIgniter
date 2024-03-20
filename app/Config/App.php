@@ -18,7 +18,7 @@ class App extends BaseConfig
      */
     
     // Estoy en la rama
-    public string $baseURL = 'http://192.168.50.17:90/cine/public';
+    public string $baseURL = 'http://localhost:90/cine/public';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
