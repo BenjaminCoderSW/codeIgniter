@@ -48,24 +48,29 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
         <table class="table table-dark mt-2">
             <thead class="table-ligth">
                 <tr>
-                    <th class="w-25 text-center">Título</th>
-                    <th class="w-25 text-center">Portada</th>
-                    <th class="w-25 text-center">Género</th>
-                    <th class="w-25 text-center">Precio</th>
+                    <th class="w-25 text-center">Película</th>
+                    <th class=" text-center">Portada</th>
+                    <th class=" text-center">Género</th>
+                    <th class=" text-center">Precio</th>
+                    <th class=" text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($peliculas as $pelicula):?>
                     <tr>
-                        <td class="w-25 text-center"><?=$pelicula['titulo_pelicula'];?></td>
+                        <td class="w-25 text-center"><h3><?=$pelicula['titulo_pelicula'];?></h3>
+                        <br>
+                        <p><?=$pelicula['sinopsis'];?></p>
+                        </td>
                         <td class="w-25 text-center"><img class="img-thumbnail" src="<?=base_url()?>/uploads/<?=$pelicula['imagen'];?>" width="100" alt=""></td>
                         <td class="w-25 text-center"><?=$pelicula['genero']; ?></td>
+                        <td class="w-25 text-center"><?=$pelicula['precio']; ?></td>
                         <td class="w-25 text-center">
                             <form action="<?=base_url('peliculas/editar/'.$pelicula['id_pelicula'])?>" >
                                 <button class="btn btn-light mb-1" type="submit">Editar</button>
                             </form>
                             <form action="<?=base_url('peliculas/borrar/'.$pelicula['id_pelicula'])?>" method="post">
-                                <button class="btn btn-danger" type="submit"  onsubmit="return confirmarEliminacion();">Borrar</button>
+                                <button class="btn btn-danger" type="submit"  onsubmit="return confirmarEliminacionP();">Borrar</button>
                             </form>
                         </td>
                     </tr>
@@ -102,8 +107,8 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
 </div>
 </body>
 <script>
-    function confirmarEliminacion() {
-        if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+    function confirmarEliminacionP() {
+        if (confirm("¿Estás seguro de que deseas eliminar esta Película?")) {
             return true;
         } else {
             return false;
