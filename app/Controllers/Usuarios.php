@@ -60,7 +60,7 @@ class Usuarios extends Controller {
 
     public function crear_usuario_view()
     {
-        $datos['cabecera2'] = view('template/cabecera_form');
+        $datos['cabecera2'] = view('template/cabecera_insertar');
         $datos['piepagina'] = view('template/piepagina');
         return view('usuarios/insertar_usuario', $datos);
     }
@@ -246,7 +246,7 @@ class Usuarios extends Controller {
         
         $datos['usuario']['password'] = $this->desencriptar($datos['usuario']['password'], 'Hola123.');
         
-        $datos['cabecera2'] = view('template/cabecera_form');
+        $datos['cabecera2'] = view('template/cabecera_actualizar');
         $datos['piepagina'] = view('template/piepagina');
         
         return view("usuarios/actualizar_usuarios", $datos);

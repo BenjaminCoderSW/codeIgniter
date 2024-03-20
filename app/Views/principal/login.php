@@ -30,7 +30,7 @@
                         <h4 class="text-center"><strong>BenVani Cineplex</strong></h4>
                         <div class="mb-2">
                             <label for="nombre_usuario" class="form-label"><strong>Nombre de Usuario</strong></label>
-                            <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Ingresa tu Usuario" required>
+                            <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Ingresa tu Usuario" value="<?=old('nombre_usuario')?>" required>
                         </div>
                         <div class="mb-2">
                             <label for="password" class="form-label"><strong>Password</strong></label>

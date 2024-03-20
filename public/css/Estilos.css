@@ -104,3 +104,11 @@
     font-size: 16px; 
 
 }
+.tarjeta {
+    box-shadow: 0 8px 10px 0 rgb(110, 107, 107);
+    transition: 0.3s;
+    z-index: 1;
+}
+    .tarjeta:hover {
+        box-shadow: 0 10px 12px 0 rgb(0, 0, 0);
+    }

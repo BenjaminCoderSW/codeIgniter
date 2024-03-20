@@ -9,7 +9,7 @@ class Peliculas extends Controller{
     public function index()
     {
         $pelicula = new Pelicula();
-        $datos['cabecera'] = view('template/cabecera');
+        $datos['cabecera'] = view('template/cabecera_peli');
         $datos['piepagina'] = view('template/piepagina');
 
         $filtro_genero = $this->request->getGet('genero');
@@ -58,7 +58,7 @@ class Peliculas extends Controller{
 
     public function crear_pelicula_view()
     {
-        $datos['cabecera2'] = view('template/cabecera_form');
+        $datos['cabecera2'] = view('template/cabecera_insertar');
         $datos['piepagina'] = view('template/piepagina');
         return view('peliculas/insertar_pelicula', $datos);
     }
@@ -114,9 +114,9 @@ class Peliculas extends Controller{
             $pelicula->insert($datos);    
             return $this->response->redirect(site_url('peliculas'));
     }
-    private function longitud_valida($nombre_usuario)
+    private function longitud_valida($pelicula)
     {
-        if (strlen($nombre_usuario) <= 1 ) {
+        if (strlen($pelicula) < 1 ) {
             return false;
         }
         return true;
@@ -185,5 +185,61 @@ class Peliculas extends Controller{
         // Redireccionar a la página principal de películas
         return $this->response->redirect(site_url('/peliculas'));
     }
-    
+    public function editar_pelicula($id_pelicula=null){
+        $pelicula = new Pelicula();
+        $datos['pelicula']= $pelicula->where('id_pelicula',$id_pelicula)->first();
+        $datos['cabecera2'] = view('template/cabecera_actualizar');
+        $datos['piepagina'] = view('template/piepagina');
+        return view("peliculas/actualizar_peliculas", $datos);
+    }
+
+    public function actualizar_pelicula($id_pelicula=null){
+        $pelicula = new Pelicula();
+        $id_pelicula=$this->request->getVar('id');
+        $titulo_pelicula=$this->limpiar_cadena($this->request->getVar('titulo_pelicula'));
+        $duracion=$this->limpiar_cadena($this->request->getVar('duracion'));
+        $sinopsis=$this->limpiar_cadena($this->request->getVar('sinopsis'));
+        $genero=$this->limpiar_cadena($this->request->getVar('genero'));
+        $estado_pelicula=$this->limpiar_cadena($this->request->getVar('estado_pelicula'));
+        $precio=$this->limpiar_cadena($this->request->getVar('precio'));
+        if (!$this->longitud_valida($titulo_pelicula)) {
+            $sesion = session();
+            $sesion->setFlashdata("mensaje", "El titulo de la pelicula debe tener mínimo 2 caracteres.");
+            return redirect()->back()->withInput();
+        }
+        if (!$this->es_valido($titulo_pelicula, $duracion, $sinopsis, $genero, $precio, $estado_pelicula)) {
+            $sesion = session();
+            $sesion->setFlashdata("mensaje", "Por favor, completa todos los campos obligatorios.");
+            return redirect()->back()->withInput();
+        }
+        $datos = [
+            "titulo_pelicula" => $titulo_pelicula,
+            "duracion" => $duracion,
+            "sinopsis" => $sinopsis,
+            "genero" => $genero,
+            "precio" => $precio,
+            "estado_pelicula" => $estado_pelicula,
+        ];
+            $pelicula->update($id_pelicula,$datos);
+            $validacion =$this->validate([
+                'imagen'=>
+                    'uploaded[imagen]',
+                    'mime_in[imagen,image/jpg,image/jpeg,image/png,image/webp]',
+                    'max_size[imagen,1024]',
+            ]);
+            if($validacion){
+                if($imagen=$this->request->getFile("imagen")){
+                    
+                    $datosPelicula = $pelicula->where('id_pelicula',$id_pelicula)->first();
+                    $ruta =('../public/uploads/'. $datosPelicula['imagen']);
+                    unlink($ruta);
+
+                    $nuevoNombre=$imagen->getRandomName();
+                    $imagen->move("../public/uploads/", $nuevoNombre);
+                    $datos=["imagen"=>$nuevoNombre];
+                    $pelicula->update($id_pelicula,$datos);
+                }
+            }
+            return $this->response->redirect(site_url('/peliculas'));
+    }
 }

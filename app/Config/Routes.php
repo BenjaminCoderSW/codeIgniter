@@ -38,3 +38,7 @@ $routes->get('peliculas/crear', 'Peliculas::crear_pelicula_view',['filter' => 'a
 $routes->post('peliculas/guardar', 'Peliculas::guardar_pelicula', ['filter' => 'auth']);
 //ruta para borar un usuario
 $routes->post('peliculas/borrar/(:num)', 'Peliculas::borrar_pelicula/$1',['filter' => 'auth']);
+//ruta para la vista de actualizar
+$routes->get('peliculas/editar/(:num)', 'Peliculas::editar_pelicula/$1');
+//ruta para actualizar una pelicula
+$routes->post('peliculas/actualizar', 'Peliculas::actualizar_pelicula');

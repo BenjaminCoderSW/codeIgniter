@@ -42,7 +42,7 @@
         </div>
     </nav>
     <div class="text-center p-1" style="background-color:rgb(0,0,0,0.4);">
-        <h1 class="letra"><strong>Sistema Taquillero</strong></h1>
+        <h1 class="letra"><strong>ACTUALIZAR</strong></h1>
     </div>
     <div class="container">
         <?php 

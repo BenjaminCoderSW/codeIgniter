@@ -8,32 +8,37 @@ $filtro_tipo_usuario = isset($_GET['tipo_usuario']) ? $_GET['tipo_usuario'] : ''
 $filtro_estado_usuario = isset($_GET['estado_usuario']) ? $_GET['estado_usuario'] : '';
 $filtro_nombre_usuario = isset($_GET['u']) ? $_GET['u'] : '';
 ?>
-<form class="row" role="search">
-    <div class="col-sm-12 col-md-3 col-lg-3 mx-1 mb-2">
-        <select id="tipo_usuario" name="tipo_usuario" style="border: 2px solid #DA4E4E;" class="form-select">
-            <option value="">Tipo de Usuario</option>
-            <option value="Taquillero" <?= ($filtro_tipo_usuario == 'Taquillero') ? 'selected' : '' ?>>Taquillero</option>
-            <option value="Administrador" <?= ($filtro_tipo_usuario == 'Administrador') ? 'selected' : '' ?>>Administrador</option>
-        </select>
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+        <form class="row" role="search">
+            <div class="col-12 col-sm-6 col-md-4 mb-2">
+                <select id="tipo_usuario" name="tipo_usuario" style="border: 2px solid #DA4E4E;" class="form-select">
+                    <option value="">Tipo de Usuario</option>
+                    <option value="Taquillero" <?= ($filtro_tipo_usuario == 'Taquillero') ? 'selected' : '' ?>>Taquillero</option>
+                    <option value="Administrador" <?= ($filtro_tipo_usuario == 'Administrador') ? 'selected' : '' ?>>Administrador</option>
+                </select>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-2">
+                <select id="estado_usuario" name="estado_usuario" style="border: 2px solid #DA4E4E;" class="form-select">
+                    <option value="">Estado del Usuario</option>
+                    <option value="Activo" <?= ($filtro_estado_usuario == 'Activo') ? 'selected' : '' ?>>Activo</option>
+                    <option value="Inactivo" <?= ($filtro_estado_usuario == 'Inactivo') ? 'selected' : '' ?>>Inactivo</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-4 mb-2">
+                <div class="input-group">
+                    <input name="u" class="form-control" type="search" placeholder="Buscar nombre del usuario..." aria-label="Buscar" value="<?= $filtro_nombre_usuario ?>">
+                    <button class="btn btn-danger" type="submit" id="btnBuscar">Buscar</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="col-sm-12 col-md-3 col-lg-3 mx-1 mb-2">
-        <select id="estado_usuario" name="estado_usuario" style="border: 2px solid #DA4E4E;" class="form-select">
-            <option value="">Estado del Usuario</option>
-            <option value="Activo" <?= ($filtro_estado_usuario == 'Activo') ? 'selected' : '' ?>>Activo</option>
-            <option value="Inactivo" <?= ($filtro_estado_usuario == 'Inactivo') ? 'selected' : '' ?>>Inactivo</option>
-        </select>
-    </div>
-    <div class="col-sm-12 col-md-3 col-lg-3 mx-1 mb-2">
-        <input name="u" class="form-control me-2" style="border: 2px solid #DA4E4E;" type="search" placeholder="Buscar nombre de usuario..." aria-label="search" value="<?= $filtro_nombre_usuario ?>">
-    </div>
-    <div class="col-sm-12 col-md-2 col-lg-2 mx-1 mb-2">
-        <button class="btn btn-danger " type="submit" id="btnBuscar">Buscar</button>
-    </div>
-</form>
 </div>
-    <a href="<?=base_url('usuarios/crear')?>" class="btn btn-danger mb-2" type="button">Crear un Usuario</a>
-        <br>
-
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <a href="<?=base_url('usuarios/crear')?>" class="btn btn-danger mb-2" type="button">Crear un Usuario</a>
+        </div>
+    </div>
         <table class="table table-dark mt-2">
             <thead class="table-ligth">
                 <tr>
