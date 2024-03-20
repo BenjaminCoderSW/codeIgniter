@@ -44,7 +44,7 @@
         </div>
     </nav>
     <div class="text-center p-1" style="background-color:rgb(0,0,0,0.4);">
-      <h1 class="letra"><strong>USUARIOS</strong></h1>
+      <h1 class="letra"><strong>PELÍCULAS</strong></h1>
     </div>
   </div>
   <!-- Contenido de la página -->
