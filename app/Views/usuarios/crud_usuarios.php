@@ -69,7 +69,7 @@ $filtro_nombre_usuario = isset($_GET['u']) ? $_GET['u'] : '';
 
         <!-- Paginador -->
         <nav aria-label="...">
-            <ul class="pagination">
+            <ul class="pagination justify-content-center">
                 <!-- Botón Previous -->
                 <li class="page-item <?= ($current_page == 1) ? 'disabled' : '' ?>">
                 <a class="page-link" href="<?= ($current_page == 1) ? '#' : base_url('usuarios?page=' . ($current_page - 1)) ?>">Previous</a>
