@@ -62,15 +62,15 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
                         <br>
                         <p><?=$pelicula['sinopsis'];?></p>
                         </td>
-                        <td class="w-25 text-center"><img class="img-thumbnail" src="<?=base_url()?>/uploads/<?=$pelicula['imagen'];?>" width="100" alt=""></td>
-                        <td class="w-25 text-center"><?=$pelicula['genero']; ?></td>
-                        <td class="w-25 text-center"><?=$pelicula['precio']; ?></td>
-                        <td class="w-25 text-center">
+                        <td class=" text-center"><img class="img-thumbnail" src="<?=base_url()?>/uploads/<?=$pelicula['imagen'];?>" width="100" alt=""></td>
+                        <td class=" text-center"><?=$pelicula['genero']; ?></td>
+                        <td class=" text-center">$ <?=$pelicula['precio']; ?></td>
+                        <td class=" text-center">
                             <form action="<?=base_url('peliculas/editar/'.$pelicula['id_pelicula'])?>" >
                                 <button class="btn btn-light mb-1" type="submit">Editar</button>
                             </form>
-                            <form action="<?=base_url('peliculas/borrar/'.$pelicula['id_pelicula'])?>" method="post">
-                                <button class="btn btn-danger" type="submit"  onsubmit="return confirmarEliminacionP();">Borrar</button>
+                            <form action="<?=base_url('peliculas/borrar/'.$pelicula['id_pelicula'])?>" method="post" onsubmit="return confirmarEliminacionP();">
+                                <button class="btn btn-danger" type="submit" >Borrar</button>
                             </form>
                         </td>
                     </tr>

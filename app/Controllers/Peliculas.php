@@ -114,14 +114,6 @@ class Peliculas extends Controller{
             $pelicula->insert($datos);    
             return $this->response->redirect(site_url('peliculas'));
     }
-    private function coincidir_password(string $password, string $confirmar_password){
-        
-        if ($password != $confirmar_password) {
-            return false;
-        }else{
-            return true;
-        }
-    }
     private function longitud_valida($nombre_usuario)
     {
         if (strlen($nombre_usuario) <= 1 ) {
