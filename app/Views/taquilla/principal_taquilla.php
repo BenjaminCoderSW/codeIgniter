@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BenVani Cineplex</title>
-</head>
-<body>
-    Holaaaaaaaaaaaaa, esta va a ser la taquilla
-</body>
-</html>
+<?=$cabecera?>
+
+<?=$piepagina?>
