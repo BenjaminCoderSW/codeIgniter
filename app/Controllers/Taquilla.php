@@ -1,11 +1,10 @@
 <?php 
+
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Sala; 
 use App\Models\Pelicula; 
-
-// Controlador de Taquilla
 
 class Taquilla extends Controller {
     public function gethorarios() {
@@ -17,36 +16,42 @@ class Taquilla extends Controller {
 
         return view('taquilla/venta_ticket', $datos);
     }
-    public function index()
-    {
-    $peliculaModel = new Pelicula();
 
-    // Obtener todas las películas activas
-    $peliculas_activas = $peliculaModel->where('estado_pelicula', 1)->findAll();
+    public function index() {
+        $peliculaModel = new Pelicula();
 
-    // Configurar el paginador
-    $pager = \Config\Services::pager();
-    $page = $this->request->getVar('page') ? $this->request->getVar('page') : 1;
-    $perPage = 5; // Número de resultados por página
-    $offset = ($page - 1) * $perPage;
+        // Obtener todas las películas activas
+        $peliculas_activas = $peliculaModel->where('estado_pelicula', 1)->findAll();
 
-    // Obtener las películas activas paginadas
-    $query = $peliculaModel->where('estado_pelicula', 1)->orderBy('titulo_pelicula', 'ASC')->findAll($perPage, $offset);
-    $total_peliculas = $peliculaModel->where('estado_pelicula', 1)->countAllResults(); // Contar todas las películas activas
+        $datos['peliculas_activas'] = $peliculas_activas;
+        $datos['cabecera'] = view('template/cabecera_taquilla');
+        $datos['piepagina'] = view('template/piepagina');
 
-    // Calcular el número total de páginas
-    $total_pages = ceil($total_peliculas / $perPage);
-
-    // Pasar los datos a la vista
-    $datos['peliculas'] = $query;
-    $datos['peliculas_activas'] = $peliculas_activas; // Agregar las películas activas
-    $datos['total_pages'] = $total_pages;
-    $datos['current_page'] = $page;
-
-    $datos['cabecera'] = view('template/cabecera_taquilla');
-    $datos['piepagina'] = view('template/piepagina');
-
-    return view('taquilla/principal_taquilla', $datos);
+        return view('taquilla/principal_taquilla', $datos);
     }
 
+    public function filtrarPeliculas($idPelicula) {
+        $peliculaModel = new Pelicula();
+        $pelicula = $peliculaModel->find($idPelicula);
+
+        // Devolver los detalles de la película en formato JSON
+        return $this->response->setJSON($pelicula);
+    }
+
+    public function vista_comprar_boletos($id_pelicula=null){
+        $salaModel = new Sala();
+        
+        $datos['salas'] = $salaModel->findAll(); 
+        // Crea una nueva instancia de la clase Pelicula
+        $pelicula = new Pelicula();
+        // Obtiene los datos de una película específica utilizando el ID proporcionado como parámetro
+        // y los asigna a la variable $datos['pelicula']
+        $datos['pelicula']= $pelicula->where('id_pelicula',$id_pelicula)->first();
+        // Asigna vistas de cabecera y pie de página a las variables $datos['cabecera'] y $datos['piepagina'], respectivamente.
+        $datos['cabecera'] = view('template/cabecera_comprar_boletos');
+        $datos['piepagina'] = view('template/piepagina');
+        // Devuelve una vista llamada "peliculas/actualizar_peliculas" con los datos obtenidos
+        return view("taquilla/venta_ticket", $datos);
+    }
+    
 }
