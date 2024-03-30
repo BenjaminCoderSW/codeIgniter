@@ -42,3 +42,4 @@ $routes->post('peliculas/borrar/(:num)', 'Peliculas::borrar_pelicula/$1',['filte
 $routes->get('peliculas/editar/(:num)', 'Peliculas::editar_pelicula/$1');
 //ruta para actualizar una pelicula
 $routes->post('peliculas/actualizar', 'Peliculas::actualizar_pelicula');
+$routes->get('api/horarios/sala/(:num)', 'Horarios::getHorariosPorSala/$1');

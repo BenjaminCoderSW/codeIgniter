@@ -8,5 +8,5 @@ class Horario extends Model{
     // Uncomment below if you want add primary key
     // protected $primaryKey = 'id';
     protected $primaryKey = 'id_horario';
-    protected $allowedFields = ['horario_final','horario_inicio','fecha', 'id_sala','id_pelicula'];
+    protected $allowedFields = ['horario_final','horario_inicio', 'id_sala'];
 }
