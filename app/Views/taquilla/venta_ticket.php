@@ -21,7 +21,7 @@
     function actualizarHorarios() {
         var idSala = document.getElementById('sala').value;
 
-        fetch('<?= site_url('api/horarios/sala/') ?>' + idSala)
+        fetch('<?= site_url('taquilla/horarios/') ?>' + idSala)
             .then(response => response.json())
             .then(data => {
                 console.log(data); // Verifica los datos devueltos en la consola del navegador

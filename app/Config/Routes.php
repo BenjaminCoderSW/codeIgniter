@@ -42,4 +42,9 @@ $routes->post('peliculas/borrar/(:num)', 'Peliculas::borrar_pelicula/$1',['filte
 $routes->get('peliculas/editar/(:num)', 'Peliculas::editar_pelicula/$1');
 //ruta para actualizar una pelicula
 $routes->post('peliculas/actualizar', 'Peliculas::actualizar_pelicula');
-$routes->get('api/horarios/sala/(:num)', 'Horarios::getHorariosPorSala/$1');
+//ruta para obtener los horarios de la sala
+$routes->get('taquilla/horarios/(:num)', 'Horarios::getHorariosPorSala/$1');
+// Ruta para comprar boletos
+$routes->get('taquilla/comprar/(:num)', 'Taquilla::vista_comprar_boletos/$1');
+// Ruta para filtrar películas
+$routes->get('taquilla/filtrarPeliculas/(:num)', 'Taquilla::filtrarPeliculas/$1');
