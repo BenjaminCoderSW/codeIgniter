@@ -1,22 +1,25 @@
 <?=$cabecera?>
 
 <div class="row">
-<div class="col-md-4 mx-2">
-    <select id="sala" class="form-select mt-3" onchange="actualizarHorarios()">
-        <option value="">Seleccione una sala</option>
-        <?php foreach ($salas as $sala): ?>
-            <option value="<?= $sala['id_sala'] ?>"><?= $sala['nombre_sala'] ?></option>
-        <?php endforeach; ?>
-    </select>
-</div>
-<div class="col-md-4 mx-2">
-    <select id="horarios" class="form-select mt-3">
-        <option value="">Seleccione un horario</option>
-    </select>
-</div>
+    <div class="col-md-8">
+    <input type="text" id="titulo_pelicula" class="form-control form-control-lg mt-3" value="<?=$pelicula['titulo_pelicula']?>" readonly>
+        <select id="sala" class="form-select form-select-lg mt-3" onchange="actualizarHorarios()">
+            <option value="">Seleccione una sala</option>
+            <?php foreach ($salas as $sala): ?>
+                <option value="<?= $sala['id_sala'] ?>"><?= $sala['nombre_sala'] ?></option>
+            <?php endforeach; ?>
+        </select>
+        <select id="horarios" class="form-select form-select form-select-lg mt-3">
+            <option value="">Seleccione un horario</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+    <img src="<?=base_url()?>/uploads/<?=$pelicula['imagen'];?>" class="card-img" style="object-fit: contain;" alt="...">
+    </div>
 </div>
 
 <?=$piepagina?>
+
 <script>
     function actualizarHorarios() {
         var idSala = document.getElementById('sala').value;
@@ -27,6 +30,7 @@
                 console.log(data); // Verifica los datos devueltos en la consola del navegador
 
                 var horariosDropdown = document.getElementById('horarios');
+                var nombrePeliculaInput = document.getElementById('nombrePelicula');
                 horariosDropdown.innerHTML = '<option value="">Seleccione un horario</option>';
 
                 data.forEach(horario => {
@@ -36,6 +40,11 @@
                     option.textContent = horario.horario_inicio;
                     horariosDropdown.appendChild(option);
                 });
+
+                // Obtener el nombre de la película seleccionada y mostrarlo en el input
+                var peliculaSeleccionada = document.getElementById('pelicula');
+                var nombrePelicula = peliculaSeleccionada.options[peliculaSeleccionada.selectedIndex].text;
+                nombrePeliculaInput.value = nombrePelicula;
             })
             .catch(error => {
                 console.error('Error al obtener los horarios:', error);
