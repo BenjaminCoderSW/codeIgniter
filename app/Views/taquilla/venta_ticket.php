@@ -1,20 +1,21 @@
 <?=$cabecera?>
 
 <div class="row">
+    <div class="col-md-4">
+        <img src="<?= base_url() ?>/uploads/<?= $pelicula['imagen']; ?>" class="card-img mt-3" style="object-fit: contain;" alt="...">
+    </div>
     <div class="col-md-8">
-    <input type="text" id="titulo_pelicula" class="form-control form-control-lg mt-3" value="<?=$pelicula['titulo_pelicula']?>" readonly>
+        <input type="text" id="titulo_pelicula" class="form-control form-control-lg mt-3" value="<?= $pelicula['titulo_pelicula'] ?>" readonly>
         <select id="sala" class="form-select form-select-lg mt-3" onchange="actualizarHorarios()">
             <option value="">Seleccione una sala</option>
             <?php foreach ($salas as $sala): ?>
                 <option value="<?= $sala['id_sala'] ?>"><?= $sala['nombre_sala'] ?></option>
             <?php endforeach; ?>
         </select>
-        <select id="horarios" class="form-select form-select form-select-lg mt-3">
+        <select id="horarios" class="form-select form-select-lg mt-3">
             <option value="">Seleccione un horario</option>
         </select>
-    </div>
-    <div class="col-md-4">
-    <img src="<?=base_url()?>/uploads/<?=$pelicula['imagen'];?>" class="card-img" style="object-fit: contain;" alt="...">
+        <input type="date" id="fecha" class="form-control form-control-lg mt-3" min="<?= date('Y-m-d') ?>" max="<?= date('Y-m-d', strtotime('+1 week')) ?>">
     </div>
 </div>
 
