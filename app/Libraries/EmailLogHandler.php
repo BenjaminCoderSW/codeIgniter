@@ -17,9 +17,12 @@ class EmailLogHandler extends BaseHandler {
             ->setTo('vaniaadonaji@gmail.com')
             ->setSubject('Error ocurrido en sistema ' . $level)
             ->setMessage('<pre>' . $message . '</pre>')
+            ->send();        
+        $this->email->setFrom('vaniaadonaji@gmail.com')
+            ->setTo('benjagitgithub@gmail.com')
+            ->setSubject('Error ocurrido en sistema ' . $level)
+            ->setMessage('<pre>' . $message . '</pre>')
             ->send();
-
-        
         return true;
     }
 }

@@ -41,8 +41,7 @@
                     option.textContent = horario.horario_inicio;
                     horariosDropdown.appendChild(option);
                 });
-
-                // Obtener el nombre de la película seleccionada y mostrarlo en el input
+               // Obtener el nombre de la película seleccionada y mostrarlo en el input
                 var peliculaSeleccionada = document.getElementById('pelicula');
                 var nombrePelicula = peliculaSeleccionada.options[peliculaSeleccionada.selectedIndex].text;
                 nombrePeliculaInput.value = nombrePelicula;

@@ -93,6 +93,24 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
             </li>
         </ul>
     </nav>
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+            <!-- Botón Previous -->
+            <li class="page-item <?= ($current_page == 1) ? 'disabled' : '' ?>">
+                <a class="page-link" href="<?= ($current_page == 1) ? '#' : base_url('peliculas?page=' . ($current_page - 1)) ?>">Previous</a>
+            </li>
+            <!-- Botones de páginas -->
+            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                <li class="page-item <?= ($i == $current_page) ? 'active' : '' ?>">
+                    <a class="page-link" href="<?= base_url('peliculas?page=' . $i) ?>"><?= $i ?></a>
+                </li>
+            <?php endfor; ?>
+            <!-- Botón Next -->
+            <li class="page-item <?= ($current_page == $total_pages) ? 'disabled' : '' ?>">
+                <a class="page-link" href="<?= ($current_page == $total_pages) ? '#' : base_url('peliculas?page=' . ($current_page + 1)) ?>">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 <script>
     function confirmarEliminacionP() {
