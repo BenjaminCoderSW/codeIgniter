@@ -36,16 +36,18 @@ class Login extends Controller{
                 // si coinciden entonces verificamos que le usuario este activo
                 if ($usuario['estado_usuario'] == 'Activo') {
     
-                    //de estar activo iniciamos sesion
-                    session()->set('id_usuario', $usuario['id_usuario']);
-                    session()->set('tipo_usuario', $usuario['tipo_usuario']);
-                    session()->set('estado_usuario', $usuario['estado_usuario']);
-                    // si el usuario es administrador le damos todos los permisos y 
-                    //lo dirigimos a la pantalla principal
+                    // Dentro del método loggeo() después de iniciar sesión y redirigir al usuario
                     if ($usuario['tipo_usuario'] == 'Administrador') {
+                        session()->set('id_usuario', $usuario['id_usuario']);
+                        session()->set('tipo_usuario', $usuario['tipo_usuario']);
+                        session()->set('estado_usuario', $usuario['estado_usuario']);
+                        session()->set('nombre_usuario', $usuario['nombre_usuario']);
                         return redirect()->to('home/');
-                        // si es taquillero solo lo dirigimos a la pagina de taquilla
                     } elseif ($usuario['tipo_usuario'] == 'Taquillero') {
+                        session()->set('id_usuario', $usuario['id_usuario']);
+                        session()->set('tipo_usuario', $usuario['tipo_usuario']);
+                        session()->set('estado_usuario', $usuario['estado_usuario']);
+                        session()->set('nombre_usuario', $usuario['nombre_usuario']);
                         return redirect()->to('taquilla');
                     }
                 // si no esta activo el usuario no lo dejamos pasar.
