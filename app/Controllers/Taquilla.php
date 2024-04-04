@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Ticket;
 use CodeIgniter\Controller;
 use App\Models\Sala; 
 use App\Models\Pelicula; 
@@ -63,4 +64,76 @@ class Taquilla extends Controller {
         return view("taquilla/venta_ticket", $datos);
     }
     
+    public function guardar_ticket(){
+        // Crear una nueva instancia del modelo Ticket
+        $ticketModel = new Ticket();
+        
+        // Obtener los datos del formulario
+        $id_sala = $this->request->getVar('sala');
+        $id_horario = $this->request->getVar('horarios');
+        $numero_asientos = $this->limpiar_cadena($this->request->getVar('numero_asientos'));
+        $fecha_compra = $this->request->getVar('fecha_compra');
+        $nombre_cliente = $this->limpiar_cadena($this->request->getVar('nombre_cliente'));
+        $id_pelicula = $this->request->getVar('id_pelicula');
+        $total = $this->limpiar_cadena($this->request->getVar('precio_total'));
+        $id_usuario = $this->request->getVar('id_usuario');
+    
+        // Generar un folio aleatorio único para cada compra
+        $folio = uniqid();
+    
+        // Preparar los datos para la inserción en la base de datos
+        $datos_ticket = [
+            'id_sala' => $id_sala,
+            'id_horario' => $id_horario,
+            'numero_asientos' => $numero_asientos,
+            'fecha_compra' => $fecha_compra,
+            'nombre_cliente' => $nombre_cliente,
+            'folio' => $folio,
+            'id_pelicula' => $id_pelicula,
+            'total' => $total,
+            'id_usuario' => $id_usuario
+        ];
+    
+        // Insertar el ticket en la base de datos
+        $ticketModel->insert($datos_ticket);
+    
+        //return redirect()->to('exito')->with('mensaje', '¡Ticket guardado exitosamente!');
+    }    
+
+    function limpiar_cadena($cadena){
+        $cadena=trim($cadena);
+        $cadena=stripslashes($cadena);
+        $cadena=str_ireplace("<script>", "", $cadena);
+        $cadena=str_ireplace("</script>", "", $cadena);
+        $cadena=str_ireplace("<script src", "", $cadena);
+        $cadena=str_ireplace("<script type=", "", $cadena);
+        $cadena=str_ireplace("!DOCTYPE html>", "", $cadena);
+        $cadena=str_ireplace("SELECT * FROM", "", $cadena);
+        $cadena=str_ireplace("DELETE FROM", "", $cadena);
+        $cadena=str_ireplace("INSERT INTO", "", $cadena);
+        $cadena=str_ireplace("DROP TABLE", "", $cadena);
+        $cadena=str_ireplace("DROP DATABASE", "", $cadena);
+        $cadena=str_ireplace("TRUNCATE TABLE", "", $cadena);
+        $cadena=str_ireplace("SHOW TABLES;", "", $cadena);
+        $cadena=str_ireplace("SHOW DATABASES;", "", $cadena);
+        $cadena=str_ireplace("<?php", "", $cadena);
+        $cadena=str_ireplace("?>", "", $cadena);
+        $cadena=str_ireplace("--", "", $cadena);
+        $cadena=str_ireplace("^", "", $cadena);
+        $cadena=str_ireplace("<", "", $cadena);
+        $cadena=str_ireplace("[", "", $cadena);
+        $cadena=str_ireplace("]", "", $cadena);
+        $cadena=str_ireplace("==", "", $cadena);
+        $cadena=str_ireplace(";", "", $cadena);
+        $cadena=str_ireplace("::", "", $cadena);
+        $cadena=trim($cadena);
+        $cadena=stripslashes($cadena);
+        return $cadena;
+    }
+
+    public function vista_ventas(){
+        $datos['cabecera']=view('template/cabecera_ventas');
+        $datos['piepagina']=view('template/piepagina');
+        return view('taquilla/principal_venta', $datos);
+    }
 }

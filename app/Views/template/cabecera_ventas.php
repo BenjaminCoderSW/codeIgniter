@@ -11,8 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
-<body class="background">
-<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+<body class="background2">
+  <div class="">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= base_url('home/') ?>">BenVani Cineplex</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,19 +47,22 @@
         </div>
     </nav>
     <div class="text-center p-1" style="background-color:rgb(0,0,0,0.4);">
-        <h1 class="letra"><strong>COMPRA DE BOLETOS</strong></h1>
+      <h1 class="letra"><strong>VENTAS DE BenVani Cineplex</strong></h1>
     </div>
-    <div class="container">
+  </div>
+  <!-- Contenido de la página -->
+  <div class="container-fluid">
+    <?php 
+        if(session('mensaje')){ 
+    ?>
+
+    <div class="alert alert-dark" role="alert">
         <?php 
-            if(session('mensaje')){ 
+            echo session('mensaje');
         ?>
+    </div>
 
-        <div class="alert alert-dark" role="alert">
-            <?php 
-                echo session('mensaje');
-            ?>
-        </div>
-
-        <?php
-            }
-        ?>
+    <?php
+        }
+    ?>
+  

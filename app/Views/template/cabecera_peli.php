@@ -13,7 +13,7 @@
 </head>
 <body class="background2">
   <div class="">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= base_url('home/') ?>">BenVani Cineplex</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,13 +22,16 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('usuarios/') ?>">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('peliculas/') ?>">Peliculas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('taquilla/') ?>">Taquilla</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('usuarios/') ?>">Usuarios</a>
+                        <a class="nav-link btn btn-outline-info mx-2" href="<?= base_url('ventas/') ?>">Ventas BenVani Cineplex</a>
                     </li>
                 </ul>
                 <!-- Botones a la derecha -->

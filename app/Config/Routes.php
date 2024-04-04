@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\Taquilla;
 use CodeIgniter\Router\RouteCollection;
 
 /**
@@ -48,3 +49,7 @@ $routes->get('taquilla/horarios/(:num)', 'Horarios::getHorariosPorSala/$1');
 $routes->get('taquilla/comprar/(:num)', 'Taquilla::vista_comprar_boletos/$1');
 // Ruta para filtrar películas
 $routes->get('taquilla/filtrarPeliculas/(:num)', 'Taquilla::filtrarPeliculas/$1');
+// Ruta para guardar en ticket
+$routes->post('taquilla/guardar', 'Taquilla::guardar_ticket');
+// Ruta de la vista de ventas
+$routes->get('ventas', 'Taquilla::vista_ventas');

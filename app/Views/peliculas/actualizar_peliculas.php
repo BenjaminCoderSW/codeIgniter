@@ -3,7 +3,7 @@
         <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 mt-2"></div>
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 position-relative mt-2">
             <div class="card card3 text-bg-dark mb-5">
-                    <form class="row card-body" action="<?=base_url('peliculas/actualizar')?>" method="post" enctype="multipart/form-data">
+                <form class="row card-body" action="<?=base_url('peliculas/actualizar')?>" method="post" enctype="multipart/form-data">
                     <div>
                         <input type="hidden" name="id" value="<?=$pelicula['id_pelicula']?>">
                     </div>
