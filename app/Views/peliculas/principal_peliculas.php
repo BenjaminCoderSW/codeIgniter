@@ -55,7 +55,7 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
         <?php foreach ($peliculas as $pelicula):?>
             
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="card h-100 tarjeta">
+                <div class="card h-100 tarjeta">
                     <img src="<?=base_url()?>/uploads/<?=$pelicula['imagen'];?>" class="card-img-top" style="object-fit: contain; height: 300px;" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><?=$pelicula['titulo_pelicula'];?></h5>
@@ -75,24 +75,6 @@ $filtro_titulo_pelicula = isset($_GET['u']) ? $_GET['u'] : '';
             </div>
         <?php endforeach; ?>
     </div>
-    <nav aria-label="...">
-        <ul class="pagination justify-content-center">
-            <!-- Botón Previous -->
-            <li class="page-item <?= ($current_page == 1) ? 'disabled' : '' ?>">
-                <a class="page-link" href="<?= ($current_page == 1) ? '#' : base_url('peliculas?page=' . ($current_page - 1)) ?>">Previous</a>
-            </li>
-            <!-- Botones de páginas -->
-            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                <li class="page-item <?= ($i == $current_page) ? 'active' : '' ?>">
-                    <a class="page-link" href="<?= base_url('peliculas?page=' . $i) ?>"><?= $i ?></a>
-                </li>
-            <?php endfor; ?>
-            <!-- Botón Next -->
-            <li class="page-item <?= ($current_page == $total_pages) ? 'disabled' : '' ?>">
-                <a class="page-link" href="<?= ($current_page == $total_pages) ? '#' : base_url('peliculas?page=' . ($current_page + 1)) ?>">Next</a>
-            </li>
-        </ul>
-    </nav>
     <nav aria-label="...">
         <ul class="pagination justify-content-center">
             <!-- Botón Previous -->

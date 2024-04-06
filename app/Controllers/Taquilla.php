@@ -131,9 +131,67 @@ class Taquilla extends Controller {
         return $cadena;
     }
 
-    public function vista_ventas(){
-        $datos['cabecera']=view('template/cabecera_ventas');
-        $datos['piepagina']=view('template/piepagina');
+    public function vista_ventas() {
+        $ticketModel = new Ticket(); 
+        $datos['cabecera'] = view('template/cabecera_ventas');
+        $datos['piepagina'] = view('template/piepagina');
+    
+        // Obtener valores únicos de los campos para los dropdown lists
+        $fechas = $ticketModel->distinct()->select('fecha_compra')->get()->getResultArray();
+        $usuarios = $ticketModel->distinct()->select('id_usuario')->get()->getResultArray();
+        $folios = $ticketModel->distinct()->select('folio')->get()->getResultArray();
+    
+        $datos['fechas'] = $fechas;
+        $datos['usuarios'] = $usuarios;
+        $datos['folios'] = $folios;
+    
+        // Obtener parámetros de filtro
+        $filtro_fecha = $this->request->getGet('fecha');
+        $filtro_usuario = $this->request->getGet('usuario');
+        $filtro_folio = $this->request->getGet('folio');
+    
+        // Construir consulta base
+        $query = $ticketModel;
+    
+        // Aplicar filtros si existen
+        if ($filtro_fecha && $filtro_fecha != 'fecha_compra') {
+            $query = $query->where('fecha_compra', $filtro_fecha);
+        }
+        if ($filtro_usuario && $filtro_usuario != 'id_usuario') {
+            $query = $query->where('id_usuario', $filtro_usuario);
+        }
+        if ($filtro_folio && $filtro_folio != 'folio') {
+            $query = $query->where('folio', $filtro_folio);
+        }
+
+        $total_ventas = count($query->findAll());
+
+        $ventas_por_pagina = 5;
+
+        $total_pages = ceil($total_ventas / $ventas_por_pagina);
+
+        $current_page = $this->request->getVar('page') ?? 1;
+
+        $offset = ($current_page - 1) * $ventas_por_pagina;
+        
+        $query = $ticketModel;
+    
+        // Aplicar filtros si existen
+        if ($filtro_fecha && $filtro_fecha != 'fecha_compra') {
+            $query = $query->where('fecha_compra', $filtro_fecha);
+        }
+        if ($filtro_usuario && $filtro_usuario != 'id_usuario') {
+            $query = $query->where('id_usuario', $filtro_usuario);
+        }
+        if ($filtro_folio && $filtro_folio != 'folio') {
+            $query = $query->where('folio', $filtro_folio);
+        }
+
+        $datos['tickets'] = $query->findAll($ventas_por_pagina, $offset);
+
+        $datos['total_pages'] = $total_pages;
+        $datos['current_page'] = $current_page;
+    
         return view('taquilla/principal_venta', $datos);
-    }
+    }    
 }
