@@ -34,7 +34,6 @@
             <br>
             <button class="btn btn-light m-3"  type="submit"><strong>Confirmar Compra</strong></button>
             <a href="<?=base_url('taquilla')?>" type="submit" id="btnEnviar" class="btn btn-dark m-3"><strong>Cancelar</strong></a>
-            <button class="btn btn-danger m-3"  type="submit"><strong>Imprimir Ticket</strong></button>
         </form>
     </div>
 </div>
