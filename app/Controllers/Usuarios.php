@@ -182,7 +182,6 @@ class Usuarios extends Controller {
     {
         $usuarioModel = new Usuario();
 
-        // Borra el usuario y sus relaciones automáticamente debido a ON DELETE CASCADE
         $usuarioModel->delete($id_usuario);
 
         return redirect()->to(site_url('usuarios'));

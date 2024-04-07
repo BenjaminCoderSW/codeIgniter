@@ -15,7 +15,7 @@ $routes->get('usuarios', 'Usuarios::usuarios_view',['filter' => 'auth']);
 $routes->get('usuarios/crear', 'Usuarios::crear_usuario_view',['filter' => 'auth']);
 //ruta para guardar un usuario
 $routes->post('usuarios/guardar', 'Usuarios::guardar_usuario', ['filter' => 'auth']);
-//ruta para borar un usuario
+//ruta para borrar un usuario
 $routes->post('usuarios/borrar/(:num)', 'Usuarios::borrar_usuario/$1',['filter' => 'auth']);
 //ruta para loggear un usuario
 $routes->post('login', 'Login::loggeo');
@@ -53,3 +53,9 @@ $routes->get('taquilla/filtrarPeliculas/(:num)', 'Taquilla::filtrarPeliculas/$1'
 $routes->post('taquilla/guardar', 'Taquilla::guardar_ticket');
 // Ruta de la vista de ventas
 $routes->get('ventas', 'Taquilla::vista_ventas');
+//Ruta para eliminar una venta
+$routes->post('ticket/borrar/(:num)', 'Taquilla::eliminar_ticket/$1');
+//Ruta para editar una venta
+$routes->get('ticket/editar/(:num)', 'Taquilla::editar_ticket/$1');
+// ruta para actualizar la venta
+$routes->post('ticket/actualizar', 'Taquilla::actualizar_ticket');

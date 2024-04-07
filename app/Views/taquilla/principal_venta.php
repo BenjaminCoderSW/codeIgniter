@@ -41,7 +41,7 @@
                     </select>
                 </div>
                 <div class="col-12 col-md-1 mb-2">
-                    <button type="submit" class="btn btn-primary">Buscar</button>
+                    <button type="submit" class="btn btn-dark">Buscar</button>
                 </div>
             </form>
         </div>
@@ -54,15 +54,15 @@
                 <div class="card h-100 tarjeta">
                     <div class="card-body">
                         <h5 class="card-title">Venta # <?=$ticket['id_ticket'];?></h5>
-                        <p class="card-text">Folio de la venta <?=$ticket['folio']; ?></p>
-                        <p class="card-text">Nombre del cliente <?=$ticket['nombre_cliente']; ?></p>
-                        <p class="card-text">ID de la sala <?=$ticket['id_sala'];?></p>
-                        <p class="card-text">ID del horario <?=$ticket['id_horario'];?></p>
-                        <p class="card-text">ID del usuario que realizo la venta <?=$ticket['id_usuario'];?></p>
-                        <p class="card-text">ID de la pelicula <?=$ticket['id_pelicula'];?></p>
-                        <p class="card-text">Numero de asientos <?=$ticket['numero_asientos'];?></p>
-                        <p class="card-text">Fecha de la venta <?=$ticket['fecha_compra'];?></p>
-                        <p class="card-text">Total = $<?=$ticket['total']; ?></p>
+                        <p class="card-text">Folio de la venta: <strong> <?=$ticket['folio']; ?></strong></p>
+                        <p class="card-text">Nombre del cliente: <strong><?=$ticket['nombre_cliente']; ?></strong></p>
+                        <p class="card-text">ID de la sala: <strong><?=$ticket['id_sala'];?></strong></p>
+                        <p class="card-text">ID del horario: <strong><?=$ticket['id_horario'];?></strong></p>
+                        <p class="card-text">ID del usuario que realizo la venta: <strong><?=$ticket['id_usuario'];?></strong></p>
+                        <p class="card-text">ID de la pelicula: <strong><?=$ticket['id_pelicula'];?></strong></p>
+                        <p class="card-text">Numero de asientos: <strong><?=$ticket['numero_asientos'];?></strong></p>
+                        <p class="card-text">Fecha de la venta: <strong><?=$ticket['fecha_compra'];?></strong></p>
+                        <p class="card-text">Total = <strong>$<?=$ticket['total']; ?></strong></p>
                         <div class="text-center">
                             <form action="<?=base_url('ticket/editar/'.$ticket['id_ticket'])?>" >
                                 <button class="btn btn-outline-danger mb-1" type="submit">Editar</button>
@@ -102,3 +102,12 @@
     </nav>
 </div>
 <?=$piepagina?>
+<script>
+    function confirmarEliminacionP() {
+        if (confirm("¿Estás seguro de que deseas eliminar esta Venta?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
