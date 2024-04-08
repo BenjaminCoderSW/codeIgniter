@@ -7,6 +7,7 @@
         </div>
         <div class="col-md-8">
             <input type="hidden" name="id_ticket" value="<?=$ticket['id_ticket']?>">
+            <input type="hidden" name="folio" value="<?=$ticket['folio']?>">
             <input type="hidden" name="id_pelicula" id="id_pelicula" value="<?=$pelicula['id_pelicula']?>">
             <input type="hidden" name="id_usuario" value="<?=session("id_usuario")?>">
             <select id="pelicula" name="pelicula" class="form-select form-select-lg mt-3" onchange="mostrarImagen(); limpiarAsientosYTotal();">
@@ -42,7 +43,6 @@
                 <br>
                 <button class="btn btn-light m-3" onchange="submitForm();"  type="submit"><strong>Actualizar Compra</strong></button>
                 <a href="<?=base_url('ventas')?>" type="submit" id="btnEnviar" class="btn btn-dark m-3"><strong>Cancelar</strong></a>
-                <button class="btn btn-danger m-3"  type="button"><strong>Imprimir Ticket</strong></button>
         </div>
     </form>
 </div>

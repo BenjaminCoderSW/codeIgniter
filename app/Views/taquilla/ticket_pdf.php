@@ -4,81 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket de compra</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Estilos CSS para el ticket */
         body {
             font-family: Arial, sans-serif;
             font-size: 14px;
+            background-color: #ffffff; 
         }
-        .container {
-            margin: 20px auto;
-            width: 80%;
-            border: 1px solid #ccc;
-            padding: 20px;
-            background-color: #f9f9f9;
+        .ticket {
+            background-color: #ffffff;
+            border: 3px solid #DF3B3B;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 50px;
         }
-        h2 {
-            margin-top: 0;
+        .ticket-header {
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .ticket-details {
-            margin-top: 20px;
+        .ticket-logo {
+            width: 60px; 
+            height: auto;
+            margin-bottom: 10px; 
         }
-        .ticket-details table {
-            width: 100%;
-            border-collapse: collapse;
+        .ticket-heading {
+            margin-bottom: 5px;
         }
-        .ticket-details th,
-        .ticket-details td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
+        .ticket-detail span {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Ticket de compra</h2>
-        <div class="ticket-details">
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Folio</th>
-                        <td><?= $ticket['folio'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Nombre del Cliente</th>
-                        <td><?= $ticket['nombre_cliente'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Película</th>
-                        <td><?= $pelicula['titulo_pelicula'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Sala</th>
-                        <td><?= $ticket['id_sala'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Horario</th>
-                        <td><?= $ticket['id_horario'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Número de Asientos</th>
-                        <td><?= $ticket['numero_asientos'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Fecha de Compra</th>
-                        <td><?= $ticket['fecha_compra'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Total</th>
-                        <td><?= $ticket['total'] ?></td>
-                    </tr>
-                    <tr>
-                        <th>Vendido por</th>
-                        <td><?= $ticket['id_usuario'] ?></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="ticket">
+                    <div class="ticket-header">
+                        <img src="<?= base_url()?>/img/icono.png" alt="Logo del cine" class="ticket-logo">
+                        <h1 class="ticket-heading">BenVani Cinplex</h1>
+                        <h2 class="ticket-heading">Ticket de Compra</h2>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Folio:</span> <?= $ticket['folio'] ?>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Nombre del Cliente:</span> <?= $ticket['nombre_cliente'] ?>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Película:</span> <?= $pelicula['titulo_pelicula'] ?>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Sala:</span> <?= $ticket['id_sala'] ?>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Horario:</span> <?= $horario['horario_inicio'] ?> - <?= $horario['horario_final'] ?>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Número de Asientos:</span> <?= $ticket['numero_asientos'] ?>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Fecha de Compra:</span> <?= $ticket['fecha_compra'] ?>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Total:</span> <?= $ticket['total'] ?>
+                    </div>
+                    <div class="ticket-detail">
+                        <span>Vendido por:</span> <?= $usuario['nombre_usuario'] ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

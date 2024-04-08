@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Horario;
 use App\Models\Ticket;
+use App\Models\Usuario;
 use CodeIgniter\Controller;
 use App\Models\Sala;
 use App\Models\Pelicula;
@@ -117,11 +118,18 @@ class Taquilla extends Controller
     // Obtener los detalles de la película para pasar a la función de generación de PDF
     $pelicula = $peliculaModel->find($id_pelicula);
 
-    // Generar y descargar el PDF del ticket
-    $this->generar_y_descargar_ticket_pdf($datos_ticket, $pelicula);
+    $usuario_model = new Usuario();
+    $usuario = $usuario_model->find($id_usuario);
 
+    $horario_model = new Horario();
+    $horario = $horario_model->find($id_horario);
+
+    // Generar y descargar el PDF del ticket
+    $this->generar_y_descargar_ticket_pdf($datos_ticket, $pelicula, $horario, $usuario);
+    $sesion = session();
+    $sesion->setFlashdata("mensaje", "Venta Realizada Exitosamente... ¡TUS BOLETOS ESTÁN LISTOS!");
     // Redirigir a la página anterior o donde sea necesario
-    return redirect()->to(site_url('pagina_anterior'));
+    return redirect()->to(site_url('taquilla'));
 }
 
     function limpiar_cadena($cadena)
@@ -248,6 +256,7 @@ class Taquilla extends Controller
         $datos_ticket = [
             'id_sala' => $id_sala,
             'id_horario' => $id_horario,
+            'folio' => $this->request->getVar('folio'),
             'numero_asientos' => $numero_asientos,
             'fecha_compra' => $fecha_compra,
             'nombre_cliente' => $nombre_cliente,
@@ -260,13 +269,25 @@ class Taquilla extends Controller
         $ticketModel->update($id_ticket, $datos_ticket);
 
         $sesion = session();
-        $sesion->setFlashdata("mensaje", "Venta Actualizada Exitosamente... ¡YA PUEDES DESCARGAR TU TICKET!");
+        $sesion->setFlashdata("mensaje", "Venta Actualizada Exitosamente... ¡TUS BOLETOS FUERON ACTUALIZADOS!");
         // Obtener los datos actualizados del ticket después de la actualización
         $ticket_actualizado = $ticketModel->find($id_ticket);
+        $pelicula_model = new Pelicula();
+        $pelicula = $pelicula_model->find($id_pelicula);
+
+        $usuario_model = new Usuario();
+        $usuario = $usuario_model->find($id_usuario);
+
+        $horario_model = new Horario();
+        $horario = $horario_model->find($id_horario);
+
+        // Generar y descargar el PDF del ticket
+        $this->generar_y_descargar_ticket_pdf($datos_ticket, $pelicula, $horario, $usuario);
 
         // Redirigir a la página de edición del ticket con los datos actualizados
-        return redirect()->to(site_url('ticket/editar/' . $id_ticket))->with('ticket_actualizado', $ticket_actualizado);
+        return redirect()->to(site_url('ventas'));
     }
+
     public function editar_ticket($id_ticket = null)
     {
         // Obtener el ticket a editar
@@ -306,14 +327,14 @@ class Taquilla extends Controller
     }
 
     // Función para generar y descargar el PDF del ticket
-    private function generar_y_descargar_ticket_pdf($datos_ticket, $pelicula)
+    private function generar_y_descargar_ticket_pdf($datos_ticket, $pelicula, $horario, $usuario)
     {
         // Crear instancia de TCPDF
         $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
         // Establecer información del documento
         $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Nombre de tu aplicación');
+        $pdf->SetAuthor('BenVani Cineplex');
         $pdf->SetTitle('Ticket de compra');
         $pdf->SetSubject('Ticket de compra');
         $pdf->SetKeywords('Ticket, Compra, Cine');
@@ -333,7 +354,7 @@ class Taquilla extends Controller
         $pdf->AddPage();
 
         // Definir el contenido del ticket en HTML
-        $html = view('taquilla/ticket_pdf', ['ticket' => $datos_ticket, 'pelicula' => $pelicula]);
+        $html = view('taquilla/ticket_pdf', ['ticket' => $datos_ticket, 'pelicula' => $pelicula, 'horario' => $horario, 'usuario' => $usuario]);
 
         // Escribir el contenido HTML en el PDF
         $pdf->writeHTML($html, true, false, true, false, '');
